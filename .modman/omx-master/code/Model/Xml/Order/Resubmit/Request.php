@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Model_Xml_Order_Resubmit_Request extends Omx_Hooks_Model_Xml_Abstract { public function __construct ($existingXmlString) { parent::__construct(); $this->xml->loadXML($existingXmlString); } public function createRootElement () { } }

@@ -1,0 +1,462 @@
+<?xml version="1.0"?>
+<!--
+    Document   : config.xml
+    Created on : February 01, 2010, 2:06 PM
+    Author     : Ordermotion Developers
+    Copyright  : Ordermotion
+    Description:
+        Main configuration file for the OMX connector to Magento
+-->
+<config>
+    <modules>
+        <Omx_Hooks><!-- register a namespace -->
+            <version>2.4.2</version><!-- current version of the module -->
+        </Omx_Hooks>
+    </modules>
+    <global>
+        <blocks>
+            <hooks>
+                <class>Omx_Hooks_Block</class>
+            </hooks>
+            <adminhtml>
+                <rewrite>
+                    <catalog_product_edit_tabs>Omx_Hooks_Block_Catalog_Product_Edit_Tabs</catalog_product_edit_tabs>
+                </rewrite>
+            </adminhtml>
+            <enterprise_giftcardaccount>
+                <rewrite>
+                    <checkout_cart_giftcardaccount>Omx_Hooks_Block_Giftcertificate_Checkout_Cart_Giftcardaccount</checkout_cart_giftcardaccount>
+                </rewrite>
+            </enterprise_giftcardaccount>
+            <!-- this is now done dynamically
+            <checkout>
+                <rewrite>
+                    <onepage>Mage_Checkout_Block_Onepage</onepage>
+                    <onepage_omxdiscount>Omx_Hooks_Block_Omxpricing_Checkout_Onepage_Omxdiscount</onepage_omxdiscount>
+                </rewrite>
+            </checkout>
+             -->
+        </blocks>
+        <models><!-- definition of the models should be here -->
+            <hooks>
+                <class>Omx_Hooks_Model</class>
+                <resourceModel>hooks_mysql4</resourceModel>
+            </hooks>
+            <hooks_mysql4>
+                <class>Omx_Hooks_Model_Mysql4</class>
+                <entities>
+                    <settings>
+                        <table>omx__settings</table>
+                    </settings>
+                    <data>
+                        <table>omx__data</table>
+                    </data>
+                    <logs>
+                        <table>omx__logs</table>
+                    </logs>
+                </entities>
+            </hooks_mysql4>
+            <!-- This is now done dynamically 
+            <checkout>
+                <rewrite>
+                    <type_onepage>Omx_Hooks_Model_Omxpricing_Checkout_Type_Onepage</type_onepage>
+                </rewrite>
+            </checkout>
+            -->
+        </models>
+        <helpers>
+            <hooks><!-- this helper is needed for some bizzare internal Magento processing/ don't have time to investigate now -->
+                <class>Omx_Hooks_Helper</class>
+            </hooks>
+        </helpers>
+        <sales>
+            <quote>
+                <totals>
+                    <giftcertificate>
+                        <class>hooks/giftcertificate_sales_quote_address_total_giftcertificate</class>
+                        <after>wee,discount,tax,tax_subtotal,grand_total,reward,giftcardaccount</after>
+                        <before>customerbalance</before>
+                        <renderer>hooks/giftcertificate_checkout_cart_total</renderer>
+                    </giftcertificate>
+                    <!-- this is now done dynamically!!
+                    <omxdiscount>
+                        <class>hooks/total_quote_omxdiscount</class>
+                        <after>tax</after>
+                        <renderer>hooks/omxpricing_checkout_cart_total</renderer>
+                    </omxdiscount>
+                     -->
+                </totals>
+            </quote>
+            <order_invoice>
+                <totals>
+                    <giftcertificate>
+                        <class>hooks/giftcertificate_sales_order_invoice_total_giftcertificate</class>
+                    </giftcertificate>
+                    <!-- This should be done dynamically if possible -->
+                    <!-- this is now done dynamically!!
+                    <omxdiscount>
+                        <class>hooks/total_invoice_omxdiscount</class>
+                    </omxdiscount>
+                    -->
+                </totals>
+            </order_invoice>
+        </sales>
+        <resources>
+            <hooks_setup><!-- specify that this resource is a setup resource and used for upgrades -->
+                <setup><!-- which module to look for install/upgrade files in -->
+                    <module>Omx_Hooks</module>
+                    <class>Omx_Hooks_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection><!-- specify database connection for this resource -->
+                    <use>core_setup</use><!-- do not create new connection, use predefined core setup connection -->
+                </connection>
+            </hooks_setup>
+            <hooks_write>
+                <connection>
+                  <use>core_write</use>
+                </connection>
+            </hooks_write>
+            <hooks_read>
+               <connection>
+                <use>core_read</use>
+              </connection>
+            </hooks_read>
+        </resources>
+        <events><!-- register observer for these events -->
+            <!-- Tracking update job added by Mark Sanborn -->
+            <order_pending_hourly>
+                <observers>
+                    <hooks_observer>
+                        <type>singleton</type>
+                        <class>Omx_Hooks_Model_Observer</class>
+                        <method>updateTrackingNumbers</method>
+                    </hooks_observer>
+                </observers>
+            </order_pending_hourly>
+
+            <checkout_cart_add_product_complete>
+                <observers>
+                    <cart_add_product_complete>
+                        <type>singleton</type>
+                        <class>hooks/inventory_observer</class>
+                        <method>hookCheckoutCartAddProductComplete</method>
+                    </cart_add_product_complete>
+                </observers>
+            </checkout_cart_add_product_complete>
+            <checkout_cart_product_add_after>
+                <observers>
+                    <cart_product_add_after>
+                        <type>singleton</type>
+                        <class>hooks/inventory_observer</class>
+                        <method>hookCheckoutCartProductAddAfter</method>
+                    </cart_product_add_after>
+                </observers>
+            </checkout_cart_product_add_after>
+            <checkout_cart_update_items_after>
+                <observers>
+                    <cart_update_items_after>
+                        <type>singleton</type>
+                        <class>hooks/inventory_observer</class>
+                        <method>hookCheckoutCartUpdateItemsAfter</method>
+                    </cart_update_items_after>
+               </observers>
+            </checkout_cart_update_items_after>
+            <checkout_type_onepage_save_order_after>
+            <observers>
+              <hooks_price_observer>
+                <type>singleton</type>
+                <class>hooks/order_observer</class>
+                <method>hookCheckoutTypeOnepageSaveOrderAfter</method>
+              </hooks_price_observer>
+            </observers>
+          </checkout_type_onepage_save_order_after>
+          <checkout_type_onepage_save_order>
+            <observers>
+              <hooks_price_observer>
+                <type>singleton</type>
+                <class>hooks/order_observer</class>
+                <method>hookCheckoutTypeOnepageSaveOrder</method>
+              </hooks_price_observer>
+            </observers>
+          </checkout_type_onepage_save_order>
+          <controller_front_init_before>
+            <observers>
+                <hooks_price_observer>
+                    <class>hooks/omxpricing_observer</class>
+                    <method>hooksControllerFrontInitBefore</method>
+                </hooks_price_observer>
+            </observers>
+          </controller_front_init_before>
+          <controller_action_predispatch>
+            <observers>
+                <hooks_price_observer>
+                    <class>hooks/omxpricing_observer</class>
+                    <method>hooksControllerActionPredispatch</method>
+                </hooks_price_observer>
+            </observers>
+          </controller_action_predispatch>
+          <admin_system_config_changed_section_tax>
+            <observers>
+                <hooks_price_observer>
+                    <class>hooks/omxpricing_observer</class>
+                    <method>hooksAdminSystemConfigChangedSectionTax</method>
+                </hooks_price_observer>
+            </observers>
+          </admin_system_config_changed_section_tax>
+          <sales_quote_collect_totals_before>
+            <observers>
+              <hooks_price_observer>
+                  <class>hooks/omxpricing_observer</class>
+                  <method>hooksSalesQuoteCollectTotalsBefore</method>
+              </hooks_price_observer>
+              <hooks_giftcertificate_observer>
+              	<class>hooks/giftcertificate_observer</class>
+                <method>hooksSalesQuoteCollectTotalsBefore</method>
+              </hooks_giftcertificate_observer>
+          </observers>
+        </sales_quote_collect_totals_before>
+        <checkout_quote_destroy>
+            <observers>
+              <hooks_price_observer>
+                  <class>hooks/omxpricing_observer</class>
+                  <method>hooksCheckoutQuoteDestroy</method>
+              </hooks_price_observer>
+          </observers>
+        </checkout_quote_destroy>
+          <sales_order_place_before>
+            <observers>
+              <hooks_price_observer>
+                  <class>hooks/order_observer</class>
+                  <method>hookSalesOrderPlaceBefore</method>
+              </hooks_price_observer>
+          </observers>
+        </sales_order_place_before>
+          <sales_order_place_after>
+            <observers>
+              <hooks_price_observer>
+                <type>singleton</type>
+                <class>hooks/order_observer</class>
+                <method>hookSalesOrderPlaceAfter</method>
+              </hooks_price_observer>
+            </observers>
+          </sales_order_place_after>
+          <checkout_type_multishipping_create_orders_single>
+            <observers>
+                <hooks_price_observer>
+                    <class>hooks/order_observer</class>
+                    <method>hooksCheckoutTypeMultishippingCreateOrdersSingle</method>
+                </hooks_price_observer>
+                <hooks_giftcertificate_observer>
+	                <class>hooks/giftcertificate_observer</class>
+                    <method>hooksCheckoutTypeMultishippingCreateOrdersSingle</method>
+                </hooks_giftcertificate_observer>
+            </observers>
+        </checkout_type_multishipping_create_orders_single>
+          <sales_order_save_after>
+            <observers>
+                <hooks_order_modified>
+                    <type>singleton</type>
+                    <class>hooks/order_observer</class>
+                    <method>hookSalesOrderSaveAfter</method>
+                </hooks_order_modified>
+            </observers>
+            </sales_order_save_after>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <hooks_checkout_success>
+                        <type>singleton</type>
+                        <class>hooks/order_observer</class>
+                        <method>hookCheckoutOnepageControllerSuccessAction</method>
+                    </hooks_checkout_success>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <admin_system_config_changed_section_advanced>
+                <observers>
+                    <hooks_giftcertificate_observer>
+	                    <class>hooks/giftcertificate_observer</class>
+	                    <method>hooksAdminSystemConfigChangedSectionAdvanced</method>
+                </hooks_giftcertificate_observer>
+            </observers>
+          </admin_system_config_changed_section_advanced>
+            <sales_quote_remove_item>
+                <observers>
+                    <hooks_giftcertificate_observer>
+                        <class>hooks/giftcertificate_observer</class>
+                        <method>hooksSalesQuoteRemoveItem</method>
+                    </hooks_giftcertificate_observer>
+                </observers>
+            </sales_quote_remove_item>
+            <sales_quote_payment_import_data_before>
+			    <observers>
+			        <hooks_giftcertificate_observer>
+			            <class>hooks/giftcertificate_observer</class>
+			            <method>hooksSalesQuotePaymentImportDataBefore</method>
+			        </hooks_giftcertificate_observer>
+			    </observers>
+		</sales_quote_payment_import_data_before>
+		<sales_quote_merge_after>
+		  <observers>
+		      <hooks_price_observer>
+		          <class>hooks/omxpricing_observer</class>
+		          <method>hooksSalesQuoteMergeAfter</method>
+		      </hooks_price_observer>
+		  </observers>
+		</sales_quote_merge_after>
+		<sales_convert_quote_to_order>
+		  <observers>
+		      <hooks_giftcertificate_observer>
+		          <class>hooks/giftcertificate_observer</class>
+		          <method>hooksSalesConvertQuoteToOrder</method>
+		      </hooks_giftcertificate_observer>
+		      <hooks_price_observer>
+		          <class>hooks/omxpricing_observer</class>
+                  <method>hooksSalesConvertQuoteToOrder</method>
+		      </hooks_price_observer>
+		  </observers>
+		</sales_convert_quote_to_order>
+		    <paypal_prepare_line_items>
+	          <observers>
+	              <hooks_giftcertificate_observer>
+	                  <class>hooks/giftcertificate_observer</class>
+	                  <method>hooksPaypalPrepareLineItems</method>
+	              </hooks_giftcertificate_observer>
+	              <hooks_price_observer>
+	                  <class>hooks/omxpricing_observer</class>
+                      <method>hooksPaypalPrepareLineItems</method>
+	              </hooks_price_observer>
+	          </observers>
+	      </paypal_prepare_line_items>
+	      <google_checkout_discount_item_price>
+             <observers>
+                 <hooks_giftcertificate_observer>
+                     <class>hooks/giftcertificate_observer</class>
+                     <method>hooksGoogleCheckoutDiscountItemPrice</method>
+                 </hooks_giftcertificate_observer>
+                 <hooks_price_observer>
+                    <class>hooks/omxpricing_observer</class>
+                    <method>hooksGoogleCheckoutDiscountItemPrice</method>
+                 </hooks_price_observer>
+             </observers>
+         </google_checkout_discount_item_price>
+      </events>
+    </global>
+    <adminhtml><!-- Admin menu is generated here -->
+        <layout>
+            <updates>
+                <enterprise_hooks>
+                    <file>enterprise/hooks.xml</file>
+                </enterprise_hooks>
+            </updates>
+        </layout>
+        <menu>
+            <hooks translate="title" module="hooks">
+                <title>OMX Connector</title>
+                <sort_order>100</sort_order>
+                <action>hooks/admin</action>
+                <children>
+                    <!--
+                    <view translate="title">
+                        <title>View module settings</title>
+                        <action>hooks/admin/main/</action>
+                        <sort_order>10</sort_order>
+                    </view>
+                    -->
+                    <edit translate="title">
+                        <title>Edit module settings</title>
+                        <action>hooks/admin/edit/</action>
+                        <sort_order>20</sort_order>
+                    </edit>
+                    <data translate="title">
+                        <title>View order data</title>
+                        <action>hooks/admin/data/</action>
+                        <sort_order>30</sort_order>
+                    </data>
+                    <search translate='title'>
+                        <title>Search order</title>
+                        <action>hooks/admin/search/</action>
+                        <sort_order>40</sort_order>
+                    </search>
+                    <bulk translate='title'>
+                        <title>Bulk order send</title>
+                        <action>hooks/admin/bulk/</action>
+                        <sort_order>50</sort_order>
+                    </bulk>
+                    <productbulk translate='title'>
+                        <title>Bulk product send</title>
+                        <action>hooks/admin/productbulk</action>
+                        <sort_order>60</sort_order>
+                    </productbulk>
+                    <!--
+                    <omx translate="title">
+                        <title>Test the OMX order object</title>
+                        <action>hooks/admin/omx/</action>
+                    </omx>-->
+                    <!--
+                    <test translate="title">
+                        <title>Test the custom attributes for order</title>
+                        <action>hooks/admin/test/</action>
+                    </test>-->
+                    <!--<timeout translate="title">
+                            <title>Test timeout</title>
+                            <action>hooks/admin/timeout/</action>
+                    </timeout>-->
+                    <!--<omx translate="title">
+                        <title>Test the OMX cronjobs</title>
+                        <action>hooks/admin/cron/</action>
+                    </omx>-->
+                </children>
+            </hooks>
+        </menu>
+    </adminhtml>
+    <frontend>
+        <routers><!-- this is the main router for our application -->
+            <hooks>
+                <use>standard</use>
+                <args>
+                    <module>Omx_Hooks</module>
+                    <frontName>hooks</frontName>
+                </args>
+            </hooks>
+            <!--  haven't found a way yet to do this dynamically, as all events seem to be called after the controlles have been instantiated -->
+            <!-- this is done dynamically now 
+            <checkout>
+                <args>
+                    <modules>
+                        <omx_hooks before="Mage_Checkout">Omx_Hooks</omx_hooks>
+                    </modules>
+                </args>
+            </checkout>
+             -->
+        </routers>
+        <layout>
+            <updates>
+                <enterprise_hooks>
+                    <file>hooks.xml</file>
+                </enterprise_hooks>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <config_vars/><!-- this could be used in further version for default values -->
+    </default>
+    <crontab>
+        <jobs>
+            <hooks_cronjob>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>hooks/order_resubmit::call</model>
+                </run>
+            </hooks_cronjob>
+            <hooks_product_bulk_send>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>hooks/product_observer::bulkSend</model>
+                </run>
+            </hooks_product_bulk_send>
+        </jobs>
+    </crontab>
+</config>

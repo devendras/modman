@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Block_Giftcertificate_Cart extends Mage_Checkout_Block_Cart_Abstract { protected function _construct() { parent::_construct(); $this->setTemplate('hooks/giftcertificate/cart.phtml'); return $this; } protected function _prepareLayout() { parent::_prepareLayout(); return $this; } }

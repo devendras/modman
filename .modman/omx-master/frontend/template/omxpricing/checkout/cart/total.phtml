@@ -1,0 +1,27 @@
+<?php // @see Omx_Hooks_Block_Omxpricing_Checkout_Cart_Total?>
+<?php // display amount discounts. ?>
+
+<?php 
+// Only display the discount total if the currentConnectionState is TRUE to avoid 
+//inconsistent data display if connection gets lost DURING checkout.
+if ($this->getCurrentConnectionState()) : 
+?>
+<?php foreach($this->getDiscountLines() as $discountLine) : ?>
+<tr class="omx-discount-line">
+    <th class="a-right" colspan="<?php echo $this->getColspan()?>"><?php echo Mage::helper('hooks/data')->__($discountLine['name'])?></th>
+    <td  class="last a-right"><?php echo Mage::helper('core/data')->formatPrice(-1 * $discountLine['amount'])?></td>
+</tr>
+<?php endforeach; ?>
+
+<?php //insert selected free items ?>
+<?php foreach($this->freeItemGetSelected() as $policyId => $seletedItem):?>
+<tr class="omx-discount-free-item">
+		<th class="a-right" colspan="<?php echo $this->getColspan()?>">
+			<?php $_url = Mage::getUrl('hooks/omxpricing/item').'remove/'.$policyId.'/redirect/'.$this->getRedirectLocation() ; ?>
+            <a href="<?php echo $_url; ?>" title="<?php echo $this->__('Remove'); ?>" class="btn-remove"><img src="<?php echo $this->getSkinUrl('images/btn_remove.gif') ?>" alt="<?php echo $this->__('Remove')?>" /></a>
+		    <?php echo Mage::helper('hooks/data')->__('(%s x) %s', $seletedItem['qty'], $seletedItem['name']);?>
+		</th>
+		<td class="last a-right"><?php echo Mage::helper('core/data')->formatPrice(0)?></td>
+</tr>
+<?php endforeach;?>
+<?php endif;?>

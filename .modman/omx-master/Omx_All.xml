@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Omx_Hooks>
+            <codePool>local</codePool>
+            <active>true</active>
+        </Omx_Hooks>
+    </modules>
+</config>

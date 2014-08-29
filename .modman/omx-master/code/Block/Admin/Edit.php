@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Block_Admin_Edit extends Mage_Adminhtml_Block_Widget_Form_Container { public function __construct() { parent::__construct(); $this->_blockGroup = 'hooks'; $this->_mode = 'edit'; $this->_controller = 'admin'; $this->_headerText = Mage::helper('hooks/data')->__('Edit Settings '.'(Magento OMX Connector v'. Mage::getModel('hooks/connector')->omxVersion.')' ); } } 

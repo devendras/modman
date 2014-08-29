@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Block_Admin_View extends Mage_Adminhtml_Block_Widget_Form_Container { public $omx_id; public function __construct() { $args = func_get_args(); if (is_array($args[0])) { $this->omx_id = $args[0]['omx_id']; } parent::__construct(); $this->_blockGroup = 'hooks'; $this->_mode = 'view'; $this->_controller = 'admin'; $this->_headerText = Mage::helper('hooks')->__('View for an OMX entry: #'. $this->omx_id ); unset($this->_buttons[0]); unset($this->_buttons[1]); unset($this->_buttons[-1]['reset']); unset($this->_buttons[-1]['back']); } } 

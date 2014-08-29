@@ -1,0 +1,9 @@
+<?php //@see Omx_Hooks_Block_Giftcertificate_Checkout_Onepage_Payment_Additional?>
+<?php $amount = $this->getBaseCertificateAmount();?>
+<?php if ($amount > 0 && $this->isFullyPaid()) : ?>
+<div class="checkout-onepage-payment-additional-hooks">
+<p class="note">
+        <?php echo Mage::helper('hooks/giftcertificate')->__('Gift Certificate amount applied to order: %s', Mage::helper('core')->currency(-1 * $amount)); ?>
+</p>
+</div>
+<?php endif; ?>

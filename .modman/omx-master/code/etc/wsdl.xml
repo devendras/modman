@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            <complexType name="omxStandingOrderEntity">
+                <all>
+                    <element name="configurationID" type="xsd:int" />
+                    <element name="name" type="xsd:string" />
+                </all>
+            </complexType>
+            <complexType name="omxStandingOrderEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:omxStandingOrderEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="omxPaymentPlanEntity">
+                <all>
+                    <element name="planID" type="xsd:int" />
+                    <element name="name" type="xsd:string" />
+                </all>
+            </complexType>
+            <complexType name="omxPaymentPlanEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:omxPaymentPlanEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="omxExternalOrderLineEntity">
+                <all>
+                    <element name="magentoLineID" type="xsd:string"/>
+                    <element name="giftCardTotalAmount" type="xsd:decimal"/>
+                </all>
+            </complexType>
+            <complexType name="omxExternalOrderLineEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:omxExternalOrderLineEntity[]" />
+                    </restriction> 
+                </complexContent>
+            </complexType>
+        </schema>
+    </types>
+    <message name="omxProductUpdateRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="product" type="xsd:string" />
+        <part name="standingOrder" type="typens:omxStandingOrderEntityArray"/>
+        <part name="paymentPlanInformation" type="typens:omxPaymentPlanEntityArray"/>
+        <part name="createContinuityCustomOptions" type="xsd:boolean"/>
+    </message>
+    <message name="omxProductUpdateResponse">
+        <part name="result" type="xsd:int" />
+    </message>
+    <message name="omxOrderActivategiftcardRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="oderId" type="xsd:string" />
+         <part name="externalOrderLine" type="typens:omxExternalOrderLineEntityArray"/>
+    </message>
+    <message name="omxOrderActivategiftcardResponse">
+        <part name="result" type="xsd:int" />
+    </message>
+    
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="omxProductUpdate">
+            <documentation>Update product customizations like standing orders and playment plans</documentation>
+            <input message="typens:omxProductUpdateRequest" />
+            <output message="typens:omxProductUpdateResponse" />
+        </operation>
+        <operation name="omxOrderActivategiftcard">
+            <documentation>Activate all Magento Gift Cards inside an order</documentation>
+            <input message="typens:omxOrderActivategiftcardRequest"/>
+            <output message="typens:omxOrderActivategiftcardResponse"/>
+        </operation>
+    </portType>
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="omxProductUpdate">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="omxOrderActivategiftcard">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+    <service name="{{var wsdl.name}}Service">
+        <port name="{{var wsdl.handler}}Port" binding="typens:{{var wsdl.handler}}Binding">
+            <soap:address location="{{var wsdl.url}}" />
+        </port>
+    </service>
+</definitions>

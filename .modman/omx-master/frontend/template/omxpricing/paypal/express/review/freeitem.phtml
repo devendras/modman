@@ -1,0 +1,65 @@
+<?php 
+// @see Omx_Hooks_Block_Omxpricing_Paypal_Express_Review_Freeitem
+?>
+<?php 
+// Only display the discount total if the currentConnectionState is TRUE to avoid 
+//inconsistent displays if connection gets lost DURING checkout.
+if ($this->canSelect() && $this->getCurrentConnectionState() ) :?>
+<?php $freeItemSelections = $this->getFreeItemSelections('unselected');?>
+<?php if(count($freeItemSelections) ): ?>
+<div class="info-set">
+	<h2 class="legend"><?php echo $this->__('Free Item');?></h2>
+    <div class="col-2">
+		<div class="box">
+			<div class="box-title">
+				<h3><?php echo $this->__('Add a Free Item')?></h3>
+			</div>
+			<div class="box-content">
+                <div class="omxdiscount">
+                	<form action="<?php echo $this->getUrl('hooks/omxpricing/item') ?>add/true/redirect/paypal_express" method="post" id="omxfreeitem-form">
+                    <fieldset>
+                	<ul>
+                    <?php foreach($freeItemSelections as $selection) : ?>
+                    	<li>
+                    		<?php if (count($selection['items']) > 1) :?>
+                    		<div>
+                            	<label for="omxdiscount:<?php echo $selection['policyId'].'_'.$selection['lineReference'] ?>" ><?php echo Mage::helper('hooks/data')->__($selection['name']);?></label>
+                            </div>
+                    		<select name="omxdiscount[<?php echo $selection['policyId'].'_'.$selection['lineReference']?>]" id="omxdiscount:<?php echo $selection['policyId'].'_'.$selection['lineReference'] ?>" class="omx-free-item-choice">
+                    			<option />
+                    	    	<?php foreach ($selection['items'] as $key=>$item) : ?>
+                    			<option id="omxdiscount:<?php echo $selection['policyId'].'_'.$selection['lineReference'] ?>" value="<?php echo $item['itemCode']?>" >(<?php echo $item['qty']?> x) <?php echo $item['name']?></option>    
+                    		    <?php endforeach; ?>
+                    	    </select>
+                    	    <?php elseif(count($selection['items']) == 1) :?>
+                    	    	<div>
+                    	    		<label for="omxdiscount:<?php echo $selection['policyId'].'_'.$selection['lineReference'] ?>" ><?php echo Mage::helper('hooks/data')->__($selection['name']);?></label>
+                    	    	</div>
+                    	    	<input type="checkbox" name="omxdiscount[<?php echo $selection['policyId'].'_'.$selection['lineReference']?>]" id="omxdiscount:<?php echo $selection['items'][0]['itemCode']?>" value="<?php echo $selection['items'][0]['itemCode']?>"/>
+                    	    	<span>(<?php echo $selection['items'][0]['qty']?> x) <?php echo  $selection['items'][0]['name']?></span>
+                    	    <?php endif; ?>
+                        </li>
+                    <?php endforeach; // ($freeItemSelections as $selection) ?>
+                    </ul>
+                    </fieldset>
+                        <button type="button" class="button" onclick="omxfreeitemForm.submit()">
+                        	<span>
+                        		<span>
+                        		    <?php echo $this->__('Add Free Item') ?>
+                        		</span>
+                        	</span>
+                        </button>
+                </form>
+                </div>
+           	
+			</div>
+		</div>    
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+	var omxfreeitemForm = new VarienForm('omxfreeitem-form');
+//]]>
+</script>
+<?php endif; // END: (count($freeItemSelections) ?>
+<?php endif; // END: ($this->canSelect()) ?>

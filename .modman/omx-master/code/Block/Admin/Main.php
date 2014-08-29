@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Block_Admin_Main extends Mage_Adminhtml_Block_Widget_Form_Container { public function __construct() { parent::__construct(); $this->_blockGroup = 'hooks'; $this->_mode = 'main'; $this->_controller = 'admin'; $this->_headerText = 'Settings ('. Mage::helper('hooks/data')->__('Magento OMX Connector v'. Mage::getModel('hooks/connector')->omxVersion.')'); unset($this->_buttons[0]); unset($this->_buttons[1]); unset($this->_buttons[-1]); } }

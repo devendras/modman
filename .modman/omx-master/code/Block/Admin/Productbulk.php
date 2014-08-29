@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Block_Admin_ProductBulk extends Mage_Adminhtml_Block_Widget_Form_Container { public function __construct() { parent::__construct(); $this->_blockGroup = 'hooks'; $this->_mode = 'productbulk'; $this->_controller = 'admin'; $this->_headerText = Mage::helper('hooks')->__('Bulk product sending to OMX' ); $this->_buttons[1]['save']['label'] = Mage::helper('hooks')->__('Send Products'); unset($this->_buttons[-1]['reset']); } public function removeSaveButtons() { unset($this->_buttons[1]); } } 

@@ -1,0 +1,171 @@
+2.4.2
+* bug fix: Allowed for coupon rules which don't have a discount in OPR pricing call
+
+2.4.1
+* bug fix: Fixed tax calculations for Paypal Express checkout
+
+2.4
+* support for Magento coupons when using OMX tax calculation
+
+2.3
+* support for the customer Tax Exempt flag of OMX (aka Business flag) for 3rd party developers
+
+2.2.2
+* bug fix: OPR call now returns an array of error messages when the response is unsuccessful or false when we don't find a Success element
+* enhanced the exception message when the Cart Calculations could not be done because OPR returned errors. Now we raise the error messages in the exception
+
+2.2.1
+* bug fix: states/regions cut to up to 10 chars to avoid validation problems in OMX
+* bug fix: UK region sent as County in order creations
+* the State/Region is sent empty in OPR for countries that don't have states defined in OMX and appended to Address2 in UDOA
+
+2.2
+* Added support for Paypal Authorizations for both Paypal Express, Paypal Standard and Paypal Express Payflow Pro Edition
+   * PaypalAuthorizationType, AuthorizationAmount is passed back to OMX
+* Added support for Paypal BillingAgreement
+   * BillingAgreementID is passed back to OMX
+   * Additional setting added in the OMX Connector to enable/disable sending of the BillingAgreementID when customer does not use billing agreement with the particular transaction but has it available on its Magento account
+
+2.1.1
+* bug fix: custom options of parent products are sent now in their children products
+
+2.1
+* integration of Magento Multi-Address Checkout
+* OMX Wait Date can be added to Order Lines before submission
+  
+2.0
+* Integration of Omx Tax Calculation
+* Integration of Omx Discount Calculation (Marketing Policies)
+* Option to override Keycode on quote - this feature is necessary to retrieve correct pricing when the order shall be placed with an overwritten Keycode
+* OPR call added 
+* MOC API new feature: MOC-Pricing-Calculator
+* Re-structured admin menu
+
+
+
+1.2.1
+* support for Magento gift card selling: transmission and remote activation through OMX
+* bug fix in demo project for order line cancellation
+* bug fix: when the connection to OMX failed after clearing caches previously the connector disabled itself
+* OIR and CuHIR calls are now executed as version 2.0
+* bugfix: when an order with credit card status 1 was sent to OMX previously there was an OMX-exception possible
+* Payment Methods Capture/Sale are now supported for Authorize.net and PayFlow Pro (VersiSign)
+* UDI calls that are refused due to missing Auth Token permissions are now logged in DB
+* Customization Fields are now displayed in Demo project.
+
+1.2
+* magento gift cards support
+* omx gift certificate support
+* omx gift certificate implementation for 3rd party dev.
+* base currency / display currencies support
+* implementation of GCIR100 
+* bugfix - EE1.9.1.1 Inventory Update sends now correct itemCode when using "Use Flat Catalog Product"
+
+1.1.2.1
+* Performance improvement for big catalogs
+
+1.1.2
+* support for Magento Enterpise 1.10.1.1
+* tracking information included in the order object about Billing and Shipping
+* added an admin notification  message when the order resubmission fails for good
+* product Bulk Additions to OMX and daily scheduler
+* fixed a bug about the failed orders of new customers
+* support of configurable products to push to OMX
+* xml characters escaping in all xml requests
+
+1.1.1
+* add and modify orderlines in OMX orders, examples provided in demo project
+* added more data in the product submission/tracking to OMX
+
+1.1.0
+* product submission/tracking to OMX
+* custom store code settable at the order level
+* down-loadable/virtual (non-shippable) products support
+
+1.0.12
+* customized fields bug fixed
+* payment plan id for orders and items for 3th party members
+
+1.0.11
+* resubmission of orders in cron job fixed
+* cron job information displayed on administration view
+* Check/TotalAmount now is optional and configurable from admin form
+* save omx order id in the original entry (manual resbumission and cron job one) to not resubmit again (in cron job)
+* fixed all the incorrect date' s formats
+
+1.0.10
+* sending Check/TotalAmount element when creating order
+* sending CardAuthorizationAmount inside Payment
+* PayerID for PayPal payments now is sending the correct data, before was empty
+
+1.0.9
+* PayPal issue with addresses
+
+1.0.8
+* bad Order Line Status on the OIR. By the moment we show the status number instead of the status text
+
+1.0.7
+* extra customization for items for 3th party members
+
+1.0.6
+* upgraded connector to Magento EE 1.9.0 and 1.9.1
+* fixed some bugs related to upgrade
+
+1.0.5
+* coupon handling at order level
+
+1.0.3
+* basic coupon handling
+
+1.0.2
+* bug fixes
+
+1.0.1
+* contuinity (standing orders) support
+* add support for third-party-integrated Payment Methods/gateways
+* OMX Order model extended and enhanced
+	* standing order data
+* bug fixes	
+
+1.0.0
+* add PayPal support
+  * Express
+  * Standard
+  * Direct (not support by OMX)
+* all OMX orders in View Orders
+* One Step Checkout - Shipping Comments --> OMX - SpecialInstructions
+* bug fixes:
+	* inventory refresh
+	* omx_customer_id
+
+0.3.10
+* bug fixes
+* money order/check support added
+* OIR request from Magento Orders support 
+
+0.3.8
+* automatic resubmission
+
+0.3.7
+* order items cancelation
+* order items wait date modification
+
+0.3.6
+* added Omx_Hooks_Model_Customer_History object and functionalities
+* created Demo Module which contains all demo/testing/non connector related functionalities
+
+0.3.5
+* added an omx_order_id Order attribute
+* added an omx_customer_number Customer attribute
+* added OMX Order class support
+* OMX orders initialization can be done from Magento Objects of from hash
+* added visualization implementation for the Omx order history/recent/view templates
+
+0.3.4
+* UI improvements
+* Google Checkout - change custom payment google checkout field for CardTransactionID
+
+0.3.3
+* change HTTPBizID to UDIAuthToken
+* send bulk orders feature added
+* google checkout support added

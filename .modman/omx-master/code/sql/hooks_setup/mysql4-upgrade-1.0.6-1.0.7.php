@@ -1,0 +1,4 @@
+<?php
+ $installer = $this; $installer->startSetup(); $installer->run("
+UPDATE {$this->getTable('omx__settings')} SET `value` = '1.0.7' WHERE {$this->getTable('omx__settings')}.`name`='omxVersion' LIMIT 1 ;
+"); $installer->installEntities( array ( 'order_item' => array( 'entity_model' => 'sales/order_item', 'table' => 'sales/order_entity', 'attributes' => array( 'omx_extra_customizations' => array( 'label' => 'Omx Extra Item Customizations', 'type' => 'text', 'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL, 'visible' => true, 'required' => false, 'user_defined' => true, ) ) ) ) ); $installer->endSetup(); 

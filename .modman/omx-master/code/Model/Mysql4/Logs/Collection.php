@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Model_Mysql4_Logs_Collection extends Varien_Data_Collection_Db { protected $_logsTable; public function __construct(){ $resources = Mage::getSingleton('core/resource'); parent::__construct($resources->getConnection('hooks_read')); $this->_logsTable = $resources->getTableName('hooks/logs'); $this->_select->from( array('omx__logs' => $this->_logsTable), array('*') ); $this->setItemObjectClass(Mage::getConfig()->getModelClassName('hooks/logs')); } }

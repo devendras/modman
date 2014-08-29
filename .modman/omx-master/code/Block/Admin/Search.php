@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Block_Admin_Search extends Mage_Adminhtml_Block_Widget_Form_Container { public function __construct() { parent::__construct(); $this->_blockGroup = 'hooks'; $this->_mode = 'search'; $this->_controller = 'admin'; $this->_headerText = Mage::helper('hooks')->__('Search for a Magento Order ID' ); $this->_buttons[1]['save']['label'] = Mage::helper('hooks')->__('Search'); } } 

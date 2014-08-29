@@ -1,0 +1,8 @@
+<?php // @see Omx_Hooks_Block_Giftcertificate_Sales_Order_Giftcertificates ?>
+<?php $certificate = $this->getUsedCertificate(); ?>
+<?php if (count($certificate)) :?>
+<tr>
+    <td class="a-right" colspan="4"><?php echo Mage::helper('hooks/data')->__('Gift Certificate (%s)', $certificate['code'])?></td>
+    <td  class="last a-right"><?php echo Mage::helper('core')->formatPrice(-1 * $certificate['amountUsed'])?></td>
+</tr>
+<?php endif;?>

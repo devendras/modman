@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Model_AdminNotification extends Mage_Core_Model_Mysql4_Abstract { protected function _construct() { $this->_init('adminnotification/inbox', 'notification_id'); } public function create(array $data) { $write = $this->_getWriteAdapter(); foreach ($data as $item) { $write->insert($this->getMainTable(), $item); } } }

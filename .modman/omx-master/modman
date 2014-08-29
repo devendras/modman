@@ -1,0 +1,7 @@
+code					   app/code/local/Omx/Hooks/
+Omx_All.xml	               app/etc/modules/Omx_All.xml
+frontend/layout/*          app/design/frontend/enterprise/default/layout/
+frontend/template/*        app/design/frontend/enterprise/default/template/hooks/
+skin/js/*				   skin/frontend/enterprise/default/js/hooks/
+adminhtml/layout/*         app/design/adminhtml/default/default/layout/enterprise/
+adminhtml/template/*       app/design/adminhtml/default/default/template/enterprise/hooks/

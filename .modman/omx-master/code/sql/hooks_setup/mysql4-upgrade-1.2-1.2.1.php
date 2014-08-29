@@ -1,0 +1,2 @@
+<?php
+$createConnectorConfigured = (Mage::helper('hooks/data')->getSettings('connectorConfigured')===false) ? true : false; $queryString = ''; $queryString = "UPDATE {$this->getTable('omx__settings')} SET `value` = '1.2.1' WHERE {$this->getTable('omx__settings')}.`name`='omxVersion' LIMIT 1 ; "; if ($createConnectorConfigured) { $queryString .= "INSERT INTO {$this->getTable('omx__settings')} (`id`, `name`, `value`) VALUES (NULL, 'connectorConfigured', '0'); "; } $installer = $this; $installer->startSetup(); $installer->run($queryString); $installer->endSetup(); 

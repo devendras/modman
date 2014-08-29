@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Block_Admin_Data extends Mage_Adminhtml_Block_Widget_Grid_Container { public function __construct () { $this->_blockGroup = 'hooks'; $this->_controller = 'admin_data'; $this->_headerText = Mage::helper('hooks')->__('View order data'); parent::__construct(); $this->_removeButton('add'); } } 

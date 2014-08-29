@@ -1,0 +1,12 @@
+<?php $_source  = $this->getSource() ?>
+<?php $_baseAmount = $_source->getBaseOmxGiftCertificatesAmountUsed();?>
+<?php $_amount = $_source->getOmxGiftCertificatesAmountUsed();?>
+<?php $_cards = Mage::helper('hooks/giftcertificate')->getCertificates($_source);?>
+<?php if ($_baseAmount > 0) :?>
+<tr>
+    <td class="label"><?php echo Mage::helper('hooks')->__('Gift Certificates (%s)', $_cards[0]['code']) ?></td>
+    <td>
+       <?php echo $this->displayPrices(-$_baseAmount, -$_amount); ?>
+    </td>
+</tr>
+<?php endif;?>

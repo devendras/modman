@@ -1,0 +1,3 @@
+<?php
+$installer = $this; $installer->startSetup(); $installer->run("
+UPDATE {$this->getTable('omx__settings')} SET `value` = '2.1' WHERE {$this->getTable('omx__settings')}.`name`='omxVersion' LIMIT 1"); $installer->installEntities( array ( 'order_item' => array( 'entity_model' => 'sales/order_item', 'table' => 'sales/order_entity', 'attributes' => array( 'omx_wait_date' => array( 'label' => 'Omx Order Line Wait Date', 'type' => 'datetime', 'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL, 'visible' => true, 'required' => false, 'user_defined' => true, ) ) ) ) ); $installer->addAttribute('quote_address', 'base_omx_gift_certificates_amount_used', array('type'=>'decimal')); $installer->endSetup(); 

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<layout>
+    <paypal_express_review>
+        <reference name="paypal.express.review">
+            <action method="setTemplate">
+                <template>hooks/omxpricing/paypal/express/review.phtml</template>
+            </action>
+        </reference>
+        <reference name="paypal.express.review">
+            <block type="hooks/omxpricing_paypal_express_review_freeitem" template="hooks/omxpricing/paypal/express/review/freeitem.phtml" name="paypal.express.review.details.omxdiscount" as="omxdiscount"/>
+        </reference>
+    </paypal_express_review>
+    <checkout_cart_index>
+     <reference name="checkout.cart.giftcardaccount">
+         <action method="setTemplate">
+             <template>hooks/giftcertificate/checkout/cart/giftcardaccount.phtml</template>
+         </action>
+    </reference>
+    <reference name="checkout.cart">
+         <action method="setCartTemplate"><value>hooks/omxpricing/checkout/cart.phtml</value></action>
+         <action method="chooseTemplate"/>
+         <block type="hooks/omxpricing_checkout_cart_freeitem" template="hooks/omxpricing/checkout/cart/freeitem.phtml" name="checkout.cart.hooks" as="omxdiscount" />
+    </reference>
+    </checkout_cart_index>
+    <sales_order_view>
+        <reference name="order_totals">
+            <block type="hooks/giftcertificate_sales_order_giftcertificates" name="giftcertificates" template="hooks/giftcertificate/giftcertotals.phtml" />
+            <block type="hooks/omxpricing_sales_order_omxdiscount" name="omxdiscount" template="hooks/omxpricing/omxdiscounttotals.phtml" />
+        </reference>
+    </sales_order_view>
+    <checkout_onepage_paymentmethod>
+       <reference name="checkout.onepage.payment.methods.additional">
+            <block type="hooks/giftcertificate_checkout_onepage_payment_additional" template="hooks/giftcertificate/checkoutadditional.phtml" name="giftcertificates_additional" />
+        </reference>
+    </checkout_onepage_paymentmethod>
+    <hooks_giftcertificate_check>
+        <reference name="root">
+            <action method="setTemplate"><template>hooks/ajax.phtml</template></action>
+            <reference name="content">
+		        <block type="hooks/giftcertificate_check" template="hooks/giftcertificate/check.phtml" name="check"/>
+            </reference>
+        </reference>
+    </hooks_giftcertificate_check>
+    <checkout_onepage_index translate="label">
+	   <reference name="checkout.onepage">
+		   <block type="hooks/omxpricing_checkout_onepage_omxdiscount" name="hooks_omxdiscount" as="omxdiscount" template="hooks/omxpricing/checkout/onepage/omxdiscount.phtml"/>
+	   </reference>
+    </checkout_onepage_index>
+    <checkout_onepage_omxdiscount>
+        <block type="hooks/omxpricing_checkout_onepage_omxdiscount" name="hooks_omxdiscount" as="omxdiscount" template="hooks/omxpricing/checkout/onepage/omxdiscount.phtml" />
+    </checkout_onepage_omxdiscount>
+</layout>

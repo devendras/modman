@@ -1,0 +1,26 @@
+<?php
+/**
+ * @see Omx_Hooks_Block_Giftcertificate_Check
+ */
+?>
+<?php //echo '<pre>'.print_r($this, true). '</pre>'?>
+
+<div class="gift-card-info">
+    <?php if ($this->error == '') :?>
+        <?php if (!$this->certValid) :?>
+        	<p class="error-msg"><?php echo $this->__('The Gift Certificate "%s" is not valid.', $this->certCode)?></p>
+        <?php else : ?>
+            <p><?php echo $this->__('Gift Certificate:')?> <strong class="giftcard-number"><?php echo $this->certCode?></strong></p>
+            <p><?php echo $this->__('Current Balance:')?>
+            	<strong>
+            		<span class="price"><?php echo Mage::helper('core')->currency($this->certBalance)?></span>
+           		</strong>
+            </p>
+            <?php if ($this->certExpiryDate != '') :?>
+        		<p><?php echo $this->__('Expires: %s', '<strong>' . $this->formatDate($this->certExpiryDate, 'short') . '</strong>'); ?></p>
+            <?php endif;?>
+       	<?php endif;?>
+    <?php else :?>
+    	<p class="error-msg"><?php echo $this->__($this->error)?>.</p>
+    <?php endif;?>
+</div>

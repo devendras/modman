@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Block_Giftcertificate_Checkout_Onepage_Payment_Additional extends Mage_Core_Block_Template { protected function _construct() { } public function getBaseCertificateAmount() { return $this->_getQuote()->getBaseOmxGiftCertificatesAmountUsed(); } public function isFullyPaid() { if ($this->_getQuote()->getBaseGrandTotal() > 0) return false; return true; } protected function _getQuote() { return Mage::getSingleton('checkout/session')->getQuote(); } }

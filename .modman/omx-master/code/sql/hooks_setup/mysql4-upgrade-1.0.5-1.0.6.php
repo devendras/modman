@@ -1,0 +1,4 @@
+<?php
+ $installer = $this; $installer->startSetup(); $installer->run("
+UPDATE {$this->getTable('omx__settings')} SET `value` = '1.0.6' WHERE {$this->getTable('omx__settings')}.`name`='omxVersion' LIMIT 1 ;
+"); $installer->installEntities( array ( 'customer' => array( 'entity_model' =>'customer/customer', 'table' => 'customer/entity', 'increment_model' => 'eav/entity_increment_numeric', 'attribute_model' => 'customer/attribute', 'additional_attribute_table' => 'customer/eav_attribute', 'entity_attribute_collection' => 'customer/attribute_collection', 'increment_per_store' => false, 'attributes' => array() ) ) ); $installer->endSetup(); 

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+    Document   : api.xml
+    Created on : April 11, 2011
+    Author     : Neus Romero
+    Copyright  : Ordermotion
+    Description:
+        Main configuration file for custom API for OMX
+-->
+<config>
+    <api>
+        <resources>
+            <omxproduct translate="title" module="hooks">
+                <title>Product Customs Resource</title>
+                <model>hooks/product_api</model>
+                <acl>omxaccess</acl>
+                <methods>
+                    <update translate="title" module="hooks">
+                        <title>Update product customizations</title>
+                        <acl>omxaccess</acl>               
+                    </update>
+                </methods>
+                <faults module="hooks">         
+                    <data_invalid> <!-- if we get invalid input data for products -->
+                        <code>100</code>
+                        <!-- we cannot know all the errors that can appear, their details can be found in error message for call -->
+                        <message>Invalid product customizations data. Details in error message.</message>
+                    </data_invalid>
+                    <not_exists>
+                        <code>101</code>
+                        <message>Product doesn't exist.</message>
+                    </not_exists>
+                    <not_updated>
+                        <code>102</code>
+                        <message>Product was not updated. Details in error message.</message>
+                    </not_updated>          
+                </faults>
+            </omxproduct>
+            <omxorder translate="title" module="hooks">
+                <title>Order Custom Recource</title>
+                <model>hooks/order_api</model>
+                <acl>omxaccess</acl>
+                <methods>
+                    <activategiftcard translate="title" module="hooks">
+                        <title>Activate MAgento Gift Cards inside an Order</title>
+                        <acl>omxaccess</acl>
+                    </activategiftcard>
+                </methods>
+                <faults module="hooks">         
+                    <data_invalid> <!-- if we get invalid input data for products -->
+                        <code>100</code>
+                        <!-- we cannot know all the errors that can appear, their details can be found in error message for call -->
+                        <message>Invalid order data. Details in error message.</message>
+                    </data_invalid>
+                    <not_exists>
+                        <code>101</code>
+                        <message>Order doesn't exist.</message>
+                    </not_exists>
+                    <cannot_invoice>
+                        <code>102</code>
+                        <message>Order cannot be invoiced.</message>
+                    </cannot_invoice>          
+                </faults>
+            </omxorder>
+        </resources>
+        <acl>
+            <resources>
+                <omxaccess translate="title" module="hooks">
+                    <title>OMX Connector APIs</title>
+                </omxaccess>
+            </resources>
+        </acl>
+        <v2>
+            <resources_function_prefix>
+                <omxproduct>omxProduct</omxproduct>
+                <omxorder>omxOrder</omxorder>
+            </resources_function_prefix>
+        </v2>
+    </api>
+</config>

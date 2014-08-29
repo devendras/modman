@@ -1,0 +1,21 @@
+<?php //@see Omx_Hooks_Block_Giftcertificate_Checkout_Cart_Total
+$cert = $this->getTotal();
+?>
+<?php if ($cert->getValue()): ?>
+<tr>
+    <th colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $cert->getStyle() ?>" class="a-right">
+        <?php if ($this->getRenderingArea() == $cert->getArea()): ?><strong><?php endif; ?>
+            <?php $_title = $this->__('Remove'); ?>
+            <?php $_url = Mage::getUrl('hooks/giftcertificate/remove', array('giftcertificate_code'=>$cert->getCertcode(), 'redirect'=>$this->getRedirectLocation())); ?>
+            <a href="<?php echo $_url; ?>" title="<?php echo $_title; ?>" class="btn-remove"><img src="<?php echo $this->getSkinUrl('images/btn_remove.gif') ?>" alt="<?php echo $this->__('Remove')?>" /></a>
+
+            <?php echo $this->__('Gift Certificate (%s)', $cert->getCertcode()); ?>
+        <?php if ($this->getRenderingArea() == $cert->getArea()): ?></strong><?php endif; ?>
+    </th>
+    <td style="<?php echo $cert->getStyle() ?>" class="a-right">
+        <?php if ($this->getRenderingArea() == $cert->getArea()): ?><strong><?php endif; ?>
+            <?php echo Mage::helper('core')->currency(-1 * $cert->getValue()) ?>
+        <?php if ($this->getRenderingArea() == $cert->getArea()): ?></strong><?php endif; ?>
+    </td>
+</tr>
+<?php endif; ?>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="order_totals">
+            <block type="adminhtml/sales_order_totals_item" name="omxgiftcertificates" template="enterprise/hooks/sales/order/totals/giftcertificate.phtml">
+                <action method="setBeforeCondition"><condition>customerbalance</condition></action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>

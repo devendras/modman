@@ -1,0 +1,14 @@
+<?php
+/**
+ * Template to display Omx discount line in the order view : sales/order/view/order_id/...
+ */ 
+// @see Omx_Hooks_Block_Omxpricing_Sales_Order_Omxdiscount
+?>
+<?php $discountLines = $this->getDiscountLines();?>
+<?php foreach ($discountLines as $discountLine) :?>
+<tr class="omx-discount-line">
+    <td class="a-right" colspan="4"><?php echo $this->__($discountLine['name'])?></td>
+    <td  class="last a-right"><?php echo Mage::helper('core')->formatPrice(-1 * $discountLine['amount'])?></td>
+</tr>
+<?php endforeach;?>
+

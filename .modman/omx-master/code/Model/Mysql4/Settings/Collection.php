@@ -1,0 +1,2 @@
+<?php
+ class Omx_Hooks_Model_Mysql4_Settings_Collection extends Varien_Data_Collection_Db { protected $_settingsTable; public function __construct(){ $resources = Mage::getSingleton('core/resource'); parent::__construct($resources->getConnection('hooks_read')); $this->_settingsTable = $resources->getTableName('hooks/settings'); $this->_select->from( array('omx__settings'=>$this->_settingsTable), array('*') ); $this->setItemObjectClass(Mage::getConfig()->getModelClassName('hooks/settings')); } }
