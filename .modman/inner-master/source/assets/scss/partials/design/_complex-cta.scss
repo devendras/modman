@@ -1,0 +1,146 @@
+%complexCta{
+    position: relative;
+    @include clearfix();
+}
+.complexCta__wideLeft{
+    @extend %complexCta;
+}
+.complexCta__wideRight{
+    @extend %complexCta;
+}
+%complexCTA__content{
+    border-bottom: 1px solid #fff;
+    display: block;
+    position: relative;
+    z-index: 10;
+    @extend %c-sm-4;
+    @extend %c-md-8;
+    @extend %c-lg-9;
+    @extend %background-color-blue;
+    @include bp($breakpoint-md){
+        position: relative;
+    }
+    @include bp($breakpoint-lg){
+        position: absolute;
+    }
+    @include bp($breakpoint-xl){
+        @include span-columns(3 omega, 12);
+        position: relative;
+    }
+}
+.complexCTA__content--gold{
+    @extend %complexCTA__content;
+    @extend %background-color-gold;
+}
+.complexCTA__content--blue{
+    @extend %complexCTA__content;
+    @extend %background-color-blue;
+}
+.complexCta__wideRight{
+    .complexCTA__content--gold{
+        @include bp($breakpoint-xl){
+            @include span-columns(3, 12);
+        }
+    }
+    .complexCTA__content--blue{
+        @include bp($breakpoint-xl){
+            @include span-columns(3, 12);
+        }
+    }
+    .complexCta__image{
+        @include bp($breakpoint-xl){
+            @include span-columns(9 omega, 12);
+        }
+    }
+}
+.complexCTA__content__img--wrapper{
+    display: none;
+    text-align: center;
+    @include bp($breakpoint-md){
+        @include span-columns(1, 8);
+        display: block;
+    }
+    @include bp($breakpoint-lg){
+        @include span-columns(1, 9);
+    }
+    @include bp($breakpoint-xl){
+        margin-bottom: 30px;
+        text-align: left;
+        @include span-columns(3 omega, 3);
+    }
+}
+.complexCTA__content__copy{
+    @extend %c-sm-4;
+    @extend %grid-padding-standard;
+    @include bp($breakpoint-md){
+        @include span-columns(5, 8);
+    }
+    @include bp($breakpoint-lg){
+        @include span-columns(3, 9);
+    }
+    @include bp($breakpoint-xl){
+        @include span-columns(6, 6);
+    }
+}
+.complexCTA__content__copy--headline{
+    margin-bottom: 20px
+}
+.complexCTA__content__copy--subhead{
+    margin-bottom: 10px;
+    @include bp($breakpoint-xl){
+        margin-bottom: 50px
+    }
+}
+.complexCTA__content__copy--link--wrapper{
+    text-align: right;
+    position: relative;
+    bottom: auto;
+    right: auto;
+    @extend %c-sm-4;
+    @include bp($breakpoint-md){
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        @include span-columns(3 omega, 8);
+    }
+    @include bp($breakpoint-lg){
+        @include span-columns(2 omega, 9);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    @include bp($breakpoint-xl){
+        @include span-columns(6 omega, 6);
+        position: relative;
+        bottom: auto;
+        right: auto;
+    }
+}
+.complexCTA__content__copy--link{
+    @extend %btn-boxed-arrow-transparent;
+}
+.complexCta__image{
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-bottom: 1px solid #fff;
+    display: block;
+    height: 300px;
+    position: relative;
+    @extend %c-sm-4-omega;
+    @include bp($breakpoint-md){
+        height: 499px;
+    }
+    @include bp($breakpoint-lg){
+        height: 640px;
+    }
+    @include bp($breakpoint-xl){
+        height: 640px;
+        @include span-columns(9, 12);
+    }
+}
+.complexCta__image--link{
+    @extend %btn-boxed-arrow-transparent;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

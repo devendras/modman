@@ -1,0 +1,55 @@
+<footer class="grid-construct sticky-footer footer">
+    <div class="footer__cta">
+        <form class="l-sm-100 l-md-50 l-lg-50 footer__cta__form">
+            <h2 class="footer__cta__form__headline">
+                <span class="footer__cta__form__headline--eyebrow">Sign up for </span>Chocomail
+            </h2>
+            <h3 class="footer__cta__form__subhead">Promotions, news, events, recipes,<br/>chocolate inspiration.</h3>
+            <label class="footer__cta__form--label visuallyhidden" for="email-address">Email address</label>
+            <input type="text" id="email-address" class="footer__cta__form--input form-input" name="email-address" placeholder="Enter your email" />
+            <button type="submit" class="btn-default">Join</button>
+        </form>
+        <section class="l-sm-100 l-md-25-omega l-lg-25-omega footer__social">
+            <button href="#" class="footer__social__item--link icon__twitter"></button>
+            <button href="#" class="footer__social__item--link icon__facebook"></button>
+            <button href="#" class="footer__social__item--link icon__pinterest"></button>
+            <button href="#" class="footer__social__item--link icon__instagram"></button>
+        </section>
+    </div>
+    <nav class="l-sm-100 footer__nav">
+        <% 6.times do |num| %>
+        <% if num == 0 %><ul class="footer__nav__list" data-num="<%= num %>"><% end %>
+        <% if num%4 == 0 and num != 0 %><ul class="footer__nav__list" data-num="<%= num %>"><% end %>
+            <li class="footer__nav__list__item">
+                <a href="#" class="footer__nav__list__item__link"><%= lorem.words 3 %></a>
+            </li>
+        <% if num%4 == 3 %></ul data-num="<%= num %>"><% end %>
+        <% end %>
+        </ul>
+    </nav>
+    <nav class="footer__mobile__nav">
+        <ul class="footer__mobile__nav--list">
+            <li class="footer__mobile__nav__list__item">
+                <a href="#" class="footer__mobile__nav__list__item__link">
+                    Careers
+                </a>
+            </li>
+            <li class="footer__mobile__nav__list__item">
+                <a href="#" class="footer__mobile__nav__list__item__link">
+                    Terms
+                </a>
+            </li>
+            <li class="footer__mobile__nav__list__item">
+                <a href="#" class="footer__mobile__nav__list__item__link">
+                    Privacy
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="l-sm-100 footer__copyright">
+        <p>©Ghirardelli <%= Time.now.year %> | Privacy Policy</p>
+    </div>
+    <div class="footer__back--to--top-container">
+        <span class="footer__back--to--top">Back to top</span><button class="btn-default footer__back--to--top--btn"></button>
+    </div>
+</footer>

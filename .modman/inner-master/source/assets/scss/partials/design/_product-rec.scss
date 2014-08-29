@@ -1,0 +1,197 @@
+.product__rec{
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+}
+.product__rec--header{
+    background-color: #fff;
+    color: $brand-primary;
+    @extend %grid-padding-standard;
+}
+.product__rec--item{
+    display: inline-block;
+    position: relative;
+    &:hover{
+        // .popover{
+        //     display: block;
+        // }
+        @include bp($breakpoint-lg){
+            .popover{
+                display: block;
+            }
+        }
+        @include bp($breakpoint-xl){
+            .popover{
+                display: block;
+            }
+        }
+    }
+}
+.product__rec--item--wrap{
+    border: 1px solid #fff;
+    padding: 8px;
+}
+.flexslider .slides img{
+    margin: 0 auto;
+    width: auto;
+}
+.product__rec--item--info{
+    @extend %grid-padding-standard;
+    min-height: 100px;
+    position: relative;
+    text-align: center;
+    .product__rec__buy{
+        color: $brand-primary;
+        @include font-size($font--delta);
+        margin-top: 10px;
+        display: block;
+    }
+    @include bp($breakpoint-md){
+        text-align: left;
+        .customer--review--rating,
+        .product__rec__buy {
+            position: absolute;
+            bottom: 10px;
+        }
+        .customer--review--rating{
+            left: 25px;
+        }
+        .product__rec__buy{
+            margin-top: 0;
+            right: 25px;
+        }
+    }
+}
+.product__rec__shopping--bag{
+    margin-left: 20px;
+    vertical-align: middle;
+    @include sprite-retina(shopping-bag);
+    @extend %icon-button;
+}
+
+
+.popover{
+    background-color: #fff;
+    border: 1px solid $brand-brown;
+    display: none;
+    height: 100%;
+    left: 0px;
+    padding: 16px;
+    position: absolute;
+    top: 0px;
+    width: 640px;
+    z-index: 10;
+    .popover--left,
+    .popover--right{
+        float: left;
+        position: relative;
+        display: block;
+        width: 50%;
+        .product__rec__shopping--bag{
+            position: absolute;
+            top: 10px;
+            left: 0px;
+        }
+    }
+    &.invert{
+        left: auto;
+        right: 0px;
+        .popover--left,
+        .popover--right{
+            float: right;
+            .product__rec__shopping--bag{
+                left: auto;
+                right: 0px;
+            }
+        }
+    }
+}
+
+.flexslider .slides img.popover__image{
+    max-width: 100%;
+    margin: 0 auto 60px auto;
+    @include transform(translate(-8px, -8px));
+}
+
+
+// Flex slide plugin overrides
+.flexslider{
+    margin: 0;
+    background-color: #fff;
+    border: 0;
+    @include border-radius(0px);
+    @include box-shadow(none);
+    .flex-direction-nav{
+        position: absolute;
+        top: 145px;
+        width: 100%;
+        li:first-child{
+            float: left;
+        }
+        li:last-child{
+            float: right;
+        }
+        a.flex-next,
+        a.flex-prev{
+            margin: 0;
+            padding: 0;
+            opacity: 1;
+            @extend .btn-default;
+            &:before{
+                font-family: inherit;
+                font-weight: lighter;
+            }
+        }
+        a.flex-next{
+            right: 0px;
+            // top: 150px;
+            &:before{
+                content:"";
+                @include sprite-retina(arrow-right);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -3px;
+                margin-top: -7px;
+            }
+        }
+        a.flex-prev{
+            left: 0px;
+            // top: 150px;
+            &:before{
+                content:"";
+                @include sprite-retina(arrow-left);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -6px;
+                margin-top: -7px;
+            }
+        }
+        display: none;
+        @include bp($breakpoint-md){
+            display: none;
+        }
+        @include bp($breakpoint-lg){
+            display: block;
+        }
+        @include bp($breakpoint-xl){
+            display: block;
+        }
+        .flex-disabled{
+            pointer-events: none;
+        }
+    }
+    &:hover{
+        .flex-direction-nav{
+            a.flex-next{
+                // right: 0px;
+                // top: 150px;
+            }
+            a.flex-prev{
+                // left: 0px;
+                // top: 150px;
+            }
+        }
+    }
+}

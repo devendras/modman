@@ -1,0 +1,164 @@
+
+/*------------------------------------*\
+    $NAV HERE
+\*------------------------------------*/
+
+$mobile-logo-height: 40px;
+$mobile-logo-width: 110px;
+
+// container for main navs.
+.navs{
+    background-color: #fff;
+    border-bottom: 1px solid $brand-info;
+    max-height: $nav-height + $nav-border-width;
+    @include bp($breakpoint-md){
+        border-bottom: $nav-border-width solid $gray-lighter;
+    }
+}
+
+.navs__mobile{
+    height: 60px;
+    position: relative;
+    @include bp($breakpoint-md){
+        display: none;
+    }
+}
+.navs__mobile__logo--link{
+    position: absolute;
+    top: 50%;
+    margin-top: -($mobile-logo-height/2);
+    left: 50%;
+    margin-left: -($mobile-logo-width/2);
+}
+.navs__mobile__logo__img{
+    width: 110px;
+    height: 40px;
+}
+.navs__mobile--btn{
+    @extend %icon-button;
+    &.icon__hamburger {
+        margin-right: 30px;
+    }
+}
+.navs__mobile__navigation {
+    display: inline-block;
+    float: left;
+    margin-top: 23px;
+}
+.navs__mobile__cart {
+    float: right;
+    display: inline-block;
+    margin-top: 23px;
+}
+.navs__mobile__cart--contents {
+    vertical-align: top;
+    color: $brand-info;
+}
+.navs__tablet__desktop{
+    display: none;
+    @include bp($breakpoint-md){
+        display: block;
+    }
+}
+// nav logodvsdfdsf
+.navs__logo{
+    @extend %c-md-2;
+    @extend %c-lg-3;
+    position: relative;
+}
+.navs__logo__img{
+    position: absolute;
+    z-index: $main-nav;
+    @include bp($breakpoint-md){
+        @include translate(0px, 0px);
+    }
+    @include bp($breakpoint-lg){
+        @include translate(0px, -29px);
+    }
+}
+
+// Utility nav
+.navs__utilityNav{
+    @extend %c-md-8-omega;
+    @extend %c-lg-12-omega;
+}
+.navs__utilityNav__list{
+    float: right;
+    margin: 10px 0 0 0;
+    @include bp($breakpoint-md){
+        margin: 10px 0 0 0;
+    }
+    @include bp($breakpoint-lg){
+        margin: 20px 0 0 0;
+    }
+}
+.navs__utilityNav__list__item{
+    display: inline-block;
+    vertical-align: middle;
+}
+.navs__utilityNav__list__item__link{
+    display: inline-block;
+    margin: 0 20px;
+    text-decoration: none;
+    &:first-child{
+        margin-left: 0;
+    }
+}
+
+// brand nav
+.navs__brandNav__list{
+    display: block;
+    white-space: nowrap;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    @extend %c-md-5-omega;
+    @extend %c-lg-8-omega;
+    @include clearfix;
+    @include bp($breakpoint-md){
+        margin-top: 20px;
+    }
+    @include bp($breakpoint-lg){
+        margin-top: 50px;
+    }
+}
+.navs__brandNav__list__item{
+    display: inline-block;
+    vertical-align: sub;
+}
+%navs__brandNav__list__item__link{
+    border-bottom: 1px solid transparent;
+    color: $brand-primary;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover{
+        color: $brand-info;
+        border-bottom: 1px solid $brand-info;
+    }
+}
+.navs__brandNav__list__item__link--large{
+    @extend %navs__brandNav__list__item__link;
+    font-size: $font--alpha;
+    margin: 0 (63px/2);
+    padding-bottom: 0px;
+    &:first-child{
+        margin-left: 0;
+    }
+    
+}
+.navs__brandNav__list__item__link--small{
+    @extend %navs__brandNav__list__item__link;
+    font-size: $font--delta;
+    margin: 0 (42px/2);
+    padding-bottom: 0px;
+    &:first-child{
+        margin-left: 0;
+    }
+    @include bp($breakpoint-md){
+        display: none;
+    }
+    @include bp($breakpoint-lg){
+        display: inline-block;
+    }
+}

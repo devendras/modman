@@ -1,0 +1,24 @@
+---
+title: Home
+layout: layout
+---
+<%= partial "modules/homepage_hero" %>
+<%= partial "modules/fullbleed_cta" %>
+<div class="grid-construct">
+    <div class="complexCta__wideLeft">
+        <%= partial "modules/complexcta_content", :locals => { :color => 'gold' } %>
+        <%= partial "modules/complexcta_image", :locals => { :color => 'gold' } %>
+    </div>
+
+    <div class="complexCta__wideRight">
+        <%= partial "modules/complexcta_content", :locals => { :color => 'blue' } %>
+        <%= partial "modules/complexcta_image", :locals => { :color => 'blue' } %>
+    </div>
+    
+    <div class="socialCtas">
+        <%= partial "modules/square_cta", :locals => { :color => 'blue' } %>
+        <%= partial "modules/social_cta", :locals => { :network => 'facebook' } %>
+        <%= partial "modules/social_cta", :locals => { :network => 'pinterest' } %>
+        <%= partial "modules/social_cta", :locals => { :network => 'instagram' } %>
+    </div>
+</div>

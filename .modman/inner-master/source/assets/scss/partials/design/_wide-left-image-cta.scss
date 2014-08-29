@@ -1,0 +1,30 @@
+.wideLeftImgCta{
+    @include bp($breakpoint-md){
+        height: 320px;
+    }
+}
+.wideLeftImgCta__img{
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 320px;
+    @include span-columns(4 omega, 4);
+    @include bp($breakpoint-md){
+        height: 100%;
+        @include span-columns(4, 8);
+    }
+    @include bp($breakpoint-lg){
+        height: 100%;
+        @include span-columns(6, 9);
+    }
+}
+.wideLeftImgCta__content{
+    @include span-columns(4 omega, 4);
+    @include bp($breakpoint-md){
+        height: 100%;
+        @include span-columns(2 omega, 8);
+    }
+    @include bp($breakpoint-lg){
+        height: 100%;
+        @include span-columns(3 omega, 9);
+    }
+}

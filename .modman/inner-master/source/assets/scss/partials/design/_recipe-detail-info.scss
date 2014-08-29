@@ -1,0 +1,243 @@
+.recipeDetail__info__header {
+    width: 100%;
+    background: $brand-primary;
+    color: white;
+    text-align: center;
+    height: 105px;
+}
+
+.recipeDetail__info__wrapper{
+    height: 100%;
+    @extend %c-md-6;
+    @extend %c-md-1-offset;
+    @extend %c-lg-8;
+    @extend %c-lg-2-offset;
+}
+.recipeDetail__prep--time{
+    @extend %c-sm-2;
+    @extend %c-md-4;
+    @extend %c-lg-6;
+}
+.recipeDetail__rating{
+    @extend %c-sm-1-omega;
+    @extend %c-md-2-omega;
+    @extend %c-lg-3-omega;
+}
+.recipeDetail__servings{
+    @extend %c-sm-1;
+    @extend %c-md-2;
+    @extend %c-lg-3;
+}
+.recipeDetail__info__header--item {
+    border-left: 1px solid $gray-light;
+    height: 100%;
+    position: relative;
+    &:first-child{
+        border-left: none;
+    }
+}
+.recipeDetail__info__header--title{
+    margin: 20px 0 0 0;
+    @include bp($breakpoint-sm){
+        margin: 30px 0 0 0;
+    }
+}
+.recipeDetail__info__header--detail{
+    text-transform: uppercase;
+    @include font-size(10px);
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    @include bp($breakpoint-md){
+       font-size: inherit;
+    }
+}
+.recipeDetail__info__header--rating{
+    display: inline-block;
+    color: #000000;
+    line-height: 2.5;
+    margin: 15px 0 0 0;
+    @include bp($breakpoint-sm){
+        margin: 25px 0 0 0;
+    }
+}
+.recipeDetail__info__header--time{
+    text-transform: uppercase;
+    font-size: 65%;
+    display: inline-block;
+    margin-left: -8px;
+}
+
+// directions
+.recipeDetail__info__ingredients{
+    @extend %c-md-3;
+    @extend %c-lg-5;
+    @extend %grid-padding-standard; 
+}
+.recipeDetail__info__directions{
+    @extend %c-md-4-omega;
+    @extend %c-md-1-offset; 
+    @extend %c-lg-6-omega; 
+    @extend %c-lg-1-offset;
+    @extend %grid-padding-standard;
+    border-left: 1px solid $gray-light;    
+}
+
+$collapsed-recipe-container-sm-height: 640px;
+$collapsed-recipe-container-md-height: 430px;
+$collapsed-recipe-container-lg-height: 500px;
+
+$expand-btn-height: 50px;
+
+.recipeDetail__info--instructions {
+    overflow: hidden;
+    position: relative;
+    max-height: none;
+    background: white;
+    border-bottom: 2px solid $gray-lighter;
+    @include single-transition(max-height, 250ms, ease-in, 0ms);
+    @include bp($breakpoint-md){
+        max-height: $collapsed-recipe-container-md-height;
+    }
+    @include bp($breakpoint-lg){
+        max-height: $collapsed-recipe-container-lg-height;
+    }
+    &:after{
+        content: "";
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        height: 100px;
+        background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.01) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(1%,rgba(255,255,255,0.01)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0.01) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0.01) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0.01) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.01) 0%,rgba(255,255,255,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    }
+}
+
+.recipeDetail__info--instructions.grown:after {
+    opacity: 0;
+}
+
+.recipeDetail__info__directions--expand--btn{
+    @extend %no-outline;
+    bottom: 0px;
+    height: $expand-btn-height;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    text-align: left;
+    min-width: 125px;
+    &:after{
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: 23px;
+        @include sprite-retina(arrow-down);
+    }
+}
+
+.recipeDetail__info__directions{
+    position: relative;
+    overflow: hidden;
+    max-height: $collapsed-recipe-container-sm-height;
+    @include bp($breakpoint-md){
+        max-height: none;
+    }
+}
+
+.recipeDetail__info__directions--list{
+    counter-reset: recipeStep;
+    padding: 0;
+    margin: 0;
+}
+
+.recipeDetail__info--list--header{
+    margin: 0 0 30px 0;
+}
+
+$recipe-instructions-counter: 40px; //width and height
+$recipe-instructions-counter-spacing: 20px;
+
+.recipeDetail__info__ingredients--list--item {
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.recipeDetail__info__directions--list--item{
+    margin: 0 0 30px 0;
+    line-height: 1.5;
+    position: relative;
+    @include bp($breakpoint-md){
+        padding-left: $recipe-instructions-counter + $recipe-instructions-counter-spacing;
+    }
+    &:before {
+        counter-increment: recipeStep;
+        content: counter(recipeStep);
+        font-size: 24px;
+        border: 1px solid $brand-info;
+        width: $recipe-instructions-counter;
+        height: $recipe-instructions-counter;
+        text-align: center;
+        line-height: 1.6;
+        color: $brand-info;
+        display: block;
+        margin-bottom: 20px;
+    }
+    @include bp($breakpoint-md){
+        &:before {
+            position: absolute;
+            top: 7px;
+            left: 0;
+        }
+    }
+}
+.recipe_detail{ //FIXME : This layout issue needs to be dealt with differently after QA
+    .productDetail__panels__panel{
+        width: 100%;
+    }
+}
+
+.recipleDetail__share{
+    padding: 25px 0;
+    overflow: hidden;
+    text-align: center;
+}
+.recipeDetail__share--header--item{
+    display: inline-block;
+    border-left: 1px solid $brand-info;
+    height: 50px;
+    vertical-align: middle;
+    padding: 8px 20px 0 20px;
+    &:first-child{
+        border-left: none;
+    }
+    @include bp($breakpoint-md){
+        display: inline-block;
+        &:first-child{
+            border-left: 1px solid $brand-info;
+        }
+        &:last-child{
+            border-right: 1px solid $brand-info;
+        }
+    }
+}
+.print--recipe{
+    display: none;
+    @include bp($breakpoint-md){
+        display: inline-block;
+    }
+}
+.print--recipe--text {
+    vertical-align: top;
+    display: inline-block;
+    padding-left: 20px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    color: $brand-primary;
+    cursor: pointer;
+}

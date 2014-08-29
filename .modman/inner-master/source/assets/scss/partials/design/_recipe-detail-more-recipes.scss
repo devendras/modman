@@ -1,0 +1,35 @@
+   .recipe__details__more__recipies--nav{
+        background: #ffffff;
+        @extend %grid-padding-standard;
+   }
+   .recipe__details__more__recipies--nav--item{
+        display: inline-block;
+        border-right: 1px solid $gray;
+        padding: 5px 20px;
+        &:last-child{
+            border-right: none;
+        }
+        &:first-child{
+            padding-left: 0;
+        }
+   }
+  .recipe__details__more__recipies--nav--links{
+        color: $brand-primary;
+        @extend %navs__brandNav__list__item__link;
+        font-size: $font--delta;
+   }
+
+.recipe__rec__view--all--container{
+  @extend %c-lg-12-omega;
+  text-align: right;
+  border-bottom: 2px solid #f4f4f4;
+  padding: 10px 20px 10px 20px;
+}
+.recipe__rec__view--all{
+  text-align: right;
+  @extend %grid-padding-standard;
+  text-transform: uppercase;
+  &.btn-link:after{
+    vertical-align: 1px;
+  }
+}

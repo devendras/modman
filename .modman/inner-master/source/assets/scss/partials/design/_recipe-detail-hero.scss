@@ -1,0 +1,73 @@
+.recipeDetail__hero {
+    position: relative;
+    .grid-construct{
+        position: relative;
+    }
+}
+.heroFullBleed{
+    // background image declared inline so Magento 
+    // can handle it
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-bottom: 1px solid #fff;
+    height: 400px;
+    position: relative;
+    margin: 0; //figure
+    background-size: cover;
+    @include bp($breakpoint-md){
+        height: 550px;
+    }
+    @include bp($breakpoint-lg){
+        height: 760px;
+        max-width:$breakpoint-px-val--max;
+        margin: 0 auto;
+    }
+}
+.heroFullBleed__caption--header{
+    text-align: center;
+    @include bp($breakpoint-md){
+        text-align: left;
+    }
+}
+.heroFullBleed__caption--tagline{
+    display: none;
+    @include bp($breakpoint-lg){
+        display: inline-block;
+        margin: 10px 0 0 0;
+    }
+}
+.heroFullBleed__caption{
+    @extend %c-md-8-omega;
+    @extend %c-lg-12-omega;
+    background: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: $brand-primary;
+    text-transform: uppercase;
+    position: relative;
+    @include bp($breakpoint-sm){
+        @include pad(1, 1);
+    }
+    @include bp($breakpoint-md){
+        @include pad(4.6, .5); // FIXME
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+    }
+    @include bp($breakpoint-lg){
+        @include pad(4, .5); // FIXME
+    }
+}
+
+.heroFullBleed__play{
+    @extend %btn-play-blue;
+    bottom: 100px;
+    display: none;
+    min-width: 250px;
+    position: absolute;
+    right: 0;
+    @include bp($breakpoint-lg){
+        display: inline-block;
+    }
+}

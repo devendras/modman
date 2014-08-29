@@ -1,0 +1,18 @@
+---
+title: Recipe Detail
+layout: layout
+---
+
+<%= partial "modules/recipe_detail_hero" %>
+<div class="grid-construct">
+	<%= partial "modules/recipe_detail_info" %>
+    <%= partial "modules/product_reviews" %>
+	<section class="product__rec">
+	    <h2 class="product__rec--header">Products Used</h2>
+	    <%= partial "modules/product_rec" %>
+	</section>
+	<section class="product__rec">
+	    <h2 class="product__rec--header">Explore More Recipes</h2>
+	    <%= partial "modules/recipe_detail_more_recipes" %>
+	</section>
+</div>

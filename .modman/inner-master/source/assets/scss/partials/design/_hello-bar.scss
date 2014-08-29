@@ -1,0 +1,20 @@
+.helloBar{
+    background: white;
+    border-bottom: 1px solid $gray-lighter;
+    color: $brand-info;
+    display: none;
+    padding: 6px 0;
+    @include bp($breakpoint-lg){
+        display: block;
+    }
+}
+.helloBar__content{
+    @extend %copy--sub;
+    @extend %c-lg-8-omega;
+    @extend %c-lg-4-offset;
+}
+.helloBar__content--details {
+    color: $brand-info;
+    margin-left: 50px;
+    text-decoration: none;
+}

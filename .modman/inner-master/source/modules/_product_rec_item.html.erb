@@ -1,0 +1,39 @@
+<li class="product__rec--item">
+    <div class="product__rec--item--wrap">
+        <%= image_tag 'squares_bag.png', :class => "principal__image" %>
+        <div class="product__rec--item--info">
+            <h3 class="productSidebar__headline"><%= lorem.words 5 %></h3>
+            <%= partial "modules/product_rating" %>
+            <section class="product__rec__buy">
+            <span class="product__rec__price">$5.99</span>
+            </section>
+        </div>
+    </div>
+
+    <div href="#" class="popover" data-controller="popover">
+        <div class="popover--left">
+            <button class="product__rec__shopping--bag"></button>
+            <%= image_tag 'squares_bag.png', :class => "popover__image" %>
+            <%= partial "modules/product_rating" %>
+        </div>
+        <div class="popover--right">
+            <a href="#" class="headline--small clearfix"><%= lorem.words 5 %></a>
+            <span>SKU 12345</span>
+            <div class="product__rec__buy">
+                <span class="product__rec__price">$5.99</span>
+            </div>
+
+            <label class="productSidebar__label--quantity">Qty.</label>
+            <input class="productSidebar__input--quantity" type="text" name="quantity" maxlength="3" />
+            <button class="btn-default productSidebar__add--to--cart">Add to Bag</button>
+            <div class="clearfix"></div>
+            <a href="#" class="btn-link">View Details</a>
+            <section class="productSidebar__social">
+                <button class="productSidebar__social--item icon__facebook"></button>
+                <button class="productSidebar__social--item icon__pinterest"></button>
+                <button class="productSidebar__social--item icon__twitter"></button>
+            </section>
+        </div>
+    </div>
+
+</li>

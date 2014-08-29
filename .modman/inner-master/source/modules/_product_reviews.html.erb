@@ -1,0 +1,26 @@
+<div id="review-panel" class="collapse__panel panel open">
+    <header class="collapse__header panel-heading">
+        <h2 class="collapse__header__title">Reviews</h2>
+        <button class="btn-default collapse__toggle" data-toggle="collapse" data-target="#collapse__reviews"></button>
+    </header>
+    <article id="collapse__reviews" class="panel-collapse collapse in">
+        <div class="collapse__body">
+            <div class="productDetail__customer--reviews">
+                <div class="productDetail__customer--review">
+                    <h3 class="productDetail__customer_review--name"><%= lorem.words 2 %></h3>
+                    <p class="productDetail__customer--review--text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                    <%= partial "modules/product_rating" %>
+                </div>
+             </div>
+            <section class="productDetail__rate__product">
+                <h2>Rate this Product</h2>
+                <form class="reviews__rating" data-controller="rateProduct">
+                    <input type="hidden" name="product-rating" value="3">
+                    <%= partial "modules/product_rating_form" %>
+                    <textarea class="productDetail__review__product"></textarea>
+                    <button class="btn-default productDetail__review__product--submit">Submit</button>
+                </form>
+            </section>
+        </div>
+    </article>
+</div>

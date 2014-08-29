@@ -1,0 +1,54 @@
+////////////////////////
+//
+// Buttons / CTA's
+//
+////////////////////////
+
+/**
+ * Buttons and
+ * Call-to-actions (CTA's)
+ */
+.btn-default,
+%btn-default{
+    @include button-variant(#fff, $brand-primary);
+    @include button-size($btn-padding-vertical, $btn-padding-horizontal, $font--epsilon, $line-height);
+}
+.btn-link,
+%btn-link{
+    @include button-variant($brand-primary, transparent);
+    @include button-size(0, 0, $font--epsilon, $line-height);
+    text-decoration: none;
+    text-transform: none;
+    &::after{
+        content: "»";
+        margin-left: 7px;
+    }
+}
+.btn-play-blue,
+%btn-play-blue{
+    @include button-play(#fff, $brand-primary);
+}
+.btn-boxed-arrow-transparent,
+%btn-boxed-arrow-transparent{
+    @include button-boxed-arrow(#fff, transparent);
+}
+.btn-boxed-arrow-blue,
+%btn-boxed-arrow-blue{
+    @include button-boxed-arrow(#fff, $brand-primary);
+}
+.btn-boxed-arrow-gold,
+%btn-boxed-arrow-gold{
+    @include button-boxed-arrow(#fff, $brand-info);
+}
+.btn-boxed-arrow-brown,
+%btn-boxed-arrow-brown{
+    @include button-boxed-arrow(#fff, $brand-brown);
+}
+
+%btn-invisible-style{
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+}

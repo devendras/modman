@@ -1,0 +1,17 @@
+/**
+ *
+ * Main design styles
+ * For Internet Explorer
+ *
+ */
+
+html, body
+{
+  height: inherit;
+}
+
+@if $sticky-footer-enabled {
+    html, body {
+      height: 100%;
+    }
+}

@@ -1,0 +1,98 @@
+////////////////////////
+//
+// Breakpoints
+//
+////////////////////////
+
+/**
+ * Susy Breakpoint Structure
+ */
+
+/*------------------------------------*\
+    $Box Sizing
+\*------------------------------------*/
+
+@include border-box-sizing;
+
+
+/*------------------------------------*\
+    $Grid Setup
+\*------------------------------------*/
+
+@if $disable-responsive == false {
+
+  //mobile first
+  .grid-construct{
+    $total-columns: $total-columns-sm;
+    $column-width: stripAndPxToEms(55px);
+    $gutter-width: stripAndPxToEms(20px); //space between columns
+    $grid-padding: stripAndPxToEms(0px);
+    $container-width: stripAndPxToEms(1280px);
+    $container-style: magic;
+
+    @include container;
+
+    // @include susy-grid-background;
+  }
+
+
+  //for medium devices
+  @include breakpoint($breakpoint-md) {
+    $total-columns: $total-columns-md;
+    $column-width: stripAndPxToEms(61px);
+    $gutter-width: stripAndPxToEms(16px); //space between columns
+    $grid-padding: stripAndPxToEms(10px);
+
+    .grid-construct {
+      @include container;
+
+      // @include susy-grid-background;
+    }
+  }
+
+
+  // for large devices
+  @include breakpoint($breakpoint-lg) {
+    $total-columns: $total-columns-lg;
+    $column-width: stripAndPxToEms(67px);
+    $gutter-width: stripAndPxToEms(2px); //space between columns
+    $grid-padding: stripAndPxToEms(0px);
+
+    .grid-construct {
+      @include container;
+    
+      // @include susy-grid-background;
+    }
+  }
+
+
+  // for extra large devices
+  @include breakpoint($breakpoint-xl) {
+    $total-columns: $total-columns-lg;
+    $column-width: stripAndPxToEms(96px);
+    $gutter-width: stripAndPxToEms(2px); //space between columns
+    $grid-padding: stripAndPxToEms(0px);
+    
+    .grid-construct {
+      @include container;
+      
+      // @include susy-grid-background;
+    }
+  }
+
+
+} @else if $disable-responsive == true {
+
+  .grid-construct {
+    $total-columns: $total-columns-lg;
+    $column-width: stripAndPxToEms(55px);
+    $gutter-width: stripAndPxToEms(20px); //space between columns
+    $grid-padding: stripAndPxToEms(20px);
+    $container-width: stripAndPxToEms(980px);
+
+    @include container;
+    
+    // @include susy-grid-background;
+  }
+
+}

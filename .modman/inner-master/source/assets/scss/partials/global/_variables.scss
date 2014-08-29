@@ -1,0 +1,158 @@
+////////////////////////
+// Variables Partials
+//
+// All of your variables should go in this file.
+////////////////////////
+
+/*------------------------------------*\
+    Colors
+\*------------------------------------*/
+
+$gray-darker:            #363636 !default;                      // #363636
+$gray-dark:              lighten($gray-darker, 20%) !default;   // #
+$gray:                   lighten($gray-darker, 33.5%) !default; // #
+$gray-light:             #cacaca !default;                      // #cacaca
+$gray-lighter:           #f4f4f4 !default;                      // #f4f4f4
+$gray-lightest:           #f9f9f9 !default;                      // #f9f9f9
+
+$brand-primary:         #004278 !default; //blue
+$brand-secondary:       #004c8b !default; //light blue
+$brand-info:            #948154 !default; //gold
+$brand-brown:           #51352a !default; //dark brown
+$brand-danger:          #DA3B3A !default;
+
+/*------------------------------------*\
+    Breakpoint Settings
+\*------------------------------------*/
+
+$breakpoint-default-media: 'all';
+$breakpoint-default-feature: 'min-width';
+$breakpoint-default-pair: 'width';
+$breakpoint-to-ems: true; //false is default
+
+//Declare breakpoint values here
+$breakpoint-px-val--sm: 719px;
+$breakpoint-px-val--md: 720px;
+$breakpoint-px-val--lg: 1024px;
+$breakpoint-px-val--xl: 1280px;
+$breakpoint-px-val--max: 1480px;
+
+//Breakpoint mixin variables:
+$breakpoint-sm: max-width $breakpoint-px-val--sm; //converted to ems automagically
+$breakpoint-md: min-width $breakpoint-px-val--md; //converted to ems automagically
+$breakpoint-lg: min-width $breakpoint-px-val--lg; //converted to ems automagically
+$breakpoint-xl: min-width $breakpoint-px-val--xl; //converted to ems automagically
+
+
+/*------------------------------------*\
+    Columns
+\*------------------------------------*/
+$total-columns-sm: 4;
+$total-columns-md: 8; 
+$total-columns-lg: 12;
+$total-columns-xl: 12;
+
+$grid-collection: ('sm', $breakpoint-sm, $total-columns-sm) ('md', $breakpoint-md, $total-columns-md) ('lg', $breakpoint-lg, $total-columns-lg);// ('xl', $breakpoint-xl, $total-columns-xl);
+
+/*------------------------------------*\
+    Sprites
+\*------------------------------------*/
+
+$sprites: sprite-map("sprites/**/*.png", $layout: smart, $spacing: 10px); // import 1x sprites  
+$sprites2x: sprite-map("sprites-2x/**/*.png", $spacing: 10px); // import 2x sprites, $layout: smart messes up retina positioning;
+
+
+/*------------------------------------*\
+    Fonts
+\*------------------------------------*/
+$base-font-size: 16px;
+
+$serif-family:      "hoplightregular", Georgia, "Times New Roman", Times, serif !default;
+$san-serif-family:  "snaglight", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+$line-height: 1.4em;
+
+$body-color: $gray-darker;
+
+$font--milli:       10px;
+$font--zeta:        12px;
+$font--epsilon:     14px;
+$font--delta:       16px;
+$font--gamma:       18px;
+$font--beta:        22px;
+$font--alpha:       24px;
+$font--kilo:        30px;
+$font--mega:        36px;
+$font--giga:        48px;
+$font--ultra:       60px;
+
+
+/*------------------------------------*\
+    z-index
+\*------------------------------------*/
+$main-nav: 100;
+$dropdown: 200;
+$modal-overlay: 300;
+$modal-content: 400;
+
+
+/*------------------------------------*\
+    Standard paddings
+\*------------------------------------*/
+$padding-sm-vrt: 25px;
+$padding-sm-hrz: 25px;
+
+$padding-md-vrt: 25px;
+$padding-md-hrz: 25px;
+
+$padding-lg-vrt: 10px;
+$padding-lg-hrz: 20px;
+
+$padding-xl-vrt: 10px;
+$padding-xl-hrz: 20px;
+
+$standard-padding-sm: $padding-sm-vrt $padding-sm-hrz;
+$standard-padding-md: $padding-md-vrt $padding-md-hrz;
+$standard-padding-lg: $padding-lg-vrt $padding-lg-hrz;
+$standard-padding-xl: $padding-xl-vrt $padding-xl-hrz;
+
+
+/*------------------------------------*\
+    Button sizing
+\*------------------------------------*/
+$square-cta-height-sm: 320px;
+$square-cta-height-md: 320px;
+$square-cta-height-lg: 277px;
+$square-cta-height-xl: 277px;
+
+/*------------------------------------*\
+    Button sizing
+\*------------------------------------*/
+$btn-padding-vertical: 8px;
+$btn-padding-horizontal: 25px;
+
+
+/*------------------------------------*\
+    input sizing
+\*------------------------------------*/
+$input-padding-vertical: 10px;
+$input-padding-horizontal: 12px;
+
+
+/*------------------------------------*\
+    Top Nav varibales
+\*------------------------------------*/
+$nav-height: 152px;
+$nav-border-width: 2px;
+
+
+/*------------------------------------*\
+    General Footer Variables
+\*------------------------------------*/
+$footer-height: 355px;
+
+
+/*------------------------------------*\
+    Sticky Footer
+\*------------------------------------*/
+$sticky-footer-enabled: true;

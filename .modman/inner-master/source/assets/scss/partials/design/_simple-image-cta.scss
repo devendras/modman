@@ -1,0 +1,48 @@
+%simpeleImageCta{
+  // background image declared inline so Magento 
+  // can handle it
+  @extend %c-lg-12;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: relative;
+  margin: 0; //figure
+  .grid-construct{
+    padding: 0;
+    @include bp($breakpoint-md){
+        padding: 0;
+    }
+  }
+}
+.simpeleImageCta{
+  @extend %simpeleImageCta;
+  height: 400px;
+  @include bp($breakpoint-md){
+    height: 570px;
+  }
+  @include bp($breakpoint-lg){
+    height: 740px;
+  }
+}
+.simpeleImageCta--short{
+  @extend %simpeleImageCta;
+  height: 300px;
+  @include bp($breakpoint-md){
+    height: 499px;
+  }
+  @include bp($breakpoint-lg){
+    height: 640px;
+  }
+}
+.simpeleImageCta__content{
+  @extend %c-sm-4;
+
+  @extend %c-md-4-offset;
+  @extend %c-md-4-omega;
+  
+  @extend %c-lg-9-offset;
+  @extend %c-lg-3-omega;
+  
+  text-align: right;
+  position: absolute;
+  bottom: 70px;
+}

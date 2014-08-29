@@ -1,0 +1,8 @@
+<form class="product--rating" data-controller="rateProduct">
+    <input type="hidden" name="product-rating" class="productSidebar__rating__input" value="0" />
+    <div class="productSidebar__rating__hearts">
+    <% 5.times do |i| %>
+        <button type="button" class="icon__heart" name="<%= i+1 %>"></button>
+    <% end %>
+    </div>
+</form>

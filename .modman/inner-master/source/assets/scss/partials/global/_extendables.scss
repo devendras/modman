@@ -1,0 +1,66 @@
+////////////////////////
+// Extendable Global Partials
+//
+// All of your global extendable classes and silent extendables
+// should go in this file.
+////////////////////////
+
+/*------------------------------------*\
+    $Structure
+\*------------------------------------*/
+%inline-block{
+  @include inline-block;
+}
+
+%block-item{
+  display: block;
+}
+
+// Also a mixin, try and use extendable class
+// to avoid code bloat
+%vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+%no-outline{
+	outline: 0;
+}
+
+%grid-padding-standard{
+  padding: $standard-padding-sm;
+  @include bp($breakpoint-md){
+    padding: $standard-padding-md;
+  }
+  @include bp($breakpoint-lg){
+    padding: $standard-padding-lg;
+  }
+  @include bp($breakpoint-xl){
+    padding: $standard-padding-xl;
+  }
+}
+
+%background-color-blue{
+  background-color: $brand-primary;
+  a,
+  &{
+    color: white;
+  }
+}
+%background-color-gold{
+  background-color: $brand-info;
+  a,
+  &{
+    color: white;
+  }
+}
+%background-color-brown{
+  background-color: $brand-brown;
+  a,
+  &{
+    color: white;
+  }
+}

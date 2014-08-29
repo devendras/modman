@@ -1,0 +1,41 @@
+/*------------------------------------*\
+    Project Specific l Blocks
+\*------------------------------------*/
+// This outputs a bunch of classes. The classes
+// are used to create layout blocks. This assumes 
+// we are turning the grid into 4 major columns. 
+// They are formatted like such.
+
+// .l-lg-1{} // Large block 25% width
+// .l-lg-2{} // Large block 50% width
+// .l-lg-3{} // Large block 75% width
+// .l-lg-4{} // Large block 100% width
+
+// .l-lg-1-omega{} // Large block 25% width no margin right
+// .l-lg-2-omega{} // Large block 50% width no margin right
+// .l-lg-3-omega{} // Large block 75% width no margin right
+// .l-lg-4-omega{} // Large block 100% width no margin right
+
+// .l-lg-1-offset{} // Offset by 25% width using margin-left;
+// .l-lg-2-offset{} // Offset by 50% width using margin-left;
+// .l-lg-3-offset{} // Offset by 75% width using margin-left;
+
+@each $grid in $grid-collection{
+    $abbr: nth($grid, 1);
+    $total-cols: nth($grid, 3);
+    $multiple: $total-cols/4;
+
+    @for $i from 1 through 4 {
+        .l-#{$abbr}-#{(100/4) * $i}{
+            @extend %c-#{$abbr}-#{$i * $multiple};
+        }
+        .l-#{$abbr}-#{(100/4) * $i}-omega{
+            @extend %c-#{$abbr}-#{$i * $multiple}-omega;
+        }
+        @if($i * $multiple != $total-cols){
+            .l-#{$abbr}-#{(100/4) * $i}-offset {
+                @extend %c-#{$abbr}-#{$i * $multiple}-offset;
+            }
+        }
+    }
+}

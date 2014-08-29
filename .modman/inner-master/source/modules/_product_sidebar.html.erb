@@ -1,0 +1,33 @@
+<div class="productSidebar">
+    <div class="productSidebar__container" data-controller="productSidebar">
+        <h1 class="productSidebar__headline"><%= lorem.words 5 %></h1>
+        <h5 class="productSidebar__sku">SKU <%= lorem.word %></h5>
+        <span class="productSidebar__price">$5.99</span>
+
+        
+        <label class="productSidebar__label--quantity">Qty.</label>
+        <input class="productSidebar__input--quantity" type="text" name="quantity" maxlength="3" />
+        <button class="btn-default productSidebar__add--to--cart">Add to Bag</button>
+
+        <button class="btn-link productSidebar__btn__wishlist">Add to Wishlist</button>
+        <section class="productDetail__rating">
+            <%= partial "modules/product_rating" %>
+            <a href="#" class="customer--rating--count">(5)</a>
+            <a href="#review-panel" class="productSidebar__ratings__link btn-link">Rate It</a>
+        </section>
+        <h5 class="productSidebar__availability">Also available at:</h5>
+        <ul class="productSidebar__also--available">
+            <li>
+                <a href="#" class="btn-link">Ghiriradelli Stores</a>
+            </li>
+            <li>
+                <a href="#" class="btn-link">Major Retailers</a>
+            </li>
+        </ul>
+        <section class="productSidebar__social">
+            <button class="productSidebar__social--item icon__facebook"></button>
+            <button class="productSidebar__social--item icon__pinterest"></button>
+            <button class="productSidebar__social--item icon__twitter"></button>
+        </section>
+    </div>
+</div>

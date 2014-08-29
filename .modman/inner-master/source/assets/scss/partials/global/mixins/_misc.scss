@@ -1,0 +1,342 @@
+////////////////////////
+// Mixins Partials
+//
+// All of your mixins should go in this file.
+////////////////////////
+
+/*------------------------------------*\
+    $Px to Rems
+\*------------------------------------*/
+   
+// Example:
+//
+// Default:
+// @include font-size(18px);
+//
+// or if you need !important:
+// @include font-size(18px, !important);
+//
+// Will turn px values into rems, with px fallback for older browsers
+
+@mixin font-size( $px-size, $important: null ) {
+  $base-font-multiplier: 1;
+  $stripped: $px-size / ($px-size * 0 + 1); // strip 'px'
+  @if $important { font-size: $stripped * $base-font-multiplier * 1px $important; font-size: $stripped / 16 * 1rem $important; }
+  @else { font-size: $stripped * $base-font-multiplier * 1px; font-size: $stripped / 16 * 1rem; }
+}
+
+
+/*------------------------------------*\
+    $Retina / 2x Images
+\*------------------------------------*/
+
+// Be sure to add .ir class to tag being replaced -- see helper-classes.scss
+// This is a deprecated mixin, replaced by global/_retina-sprites.scss, but it's a dependable backup if need-be
+@mixin image-2x($image, $image2x, $width, $height) {
+  background:image-url($image) no-repeat;
+  width: $width;
+  height: $height;
+  display: block;
+  text-indent: -9999px;
+  @media (min--moz-device-pixel-ratio: 1.25),
+         (-o-min-device-pixel-ratio: 1.25/1),
+         (-webkit-min-device-pixel-ratio: 1.25),
+         (min-device-pixel-ratio: 1.25),
+         (min-resolution: 200dpi),
+         (min-resolution: 1.25dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image:image-url($image2x);
+    background-size: $width $height;
+  }
+}
+
+// For background images without text replacement, etc
+@mixin image-2x-bg($image, $image2x, $width, $height) {
+  background:image-url($image) no-repeat;
+  @media (min--moz-device-pixel-ratio: 1.25),
+         (-o-min-device-pixel-ratio: 1.25/1),
+         (-webkit-min-device-pixel-ratio: 1.25),
+         (min-device-pixel-ratio: 1.25),
+         (min-resolution: 200dpi),
+         (min-resolution: 1.25dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image:image-url($image2x);
+    background-size: $width $height;
+  }
+}
+
+/*------------------------------------*\
+    $Opacity
+\*------------------------------------*/
+////////////////////////
+//
+//  Usage:
+//
+//    .article-heading {
+//      @include opacity(0.8);
+//    }
+//
+////////////////////////
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/*------------------------------------*\
+    $Text Overflow
+\*------------------------------------*/
+////////////////////////
+//
+//  Usage:
+//  An easy way to truncate text with an ellipsis.
+//  Requires the element to be block or inline-block.
+//
+//    .text-truncate {
+//      @include text-truncate;
+//     }
+//
+////////////////////////
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*------------------------------------*\
+    $Margin for Mobile
+\*------------------------------------*/
+
+@mixin reset-margins{
+  margin-left: -$grid-padding;
+  margin-right: -$grid-padding;
+  padding: 0 $grid-padding;
+}
+
+
+/*------------------------------------*\
+    $Visually Hidden
+\*------------------------------------*/
+////////////////////////
+//
+//  Sass can not extend classes /
+//  outer selectors from within @media breakpoints
+//  so we duplicate the class as a mixin
+//
+////////////////////////
+
+@mixin visuallyhidden{
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*------------------------------------*\
+    $Vertical-align Anything
+\*------------------------------------*/
+////////////////////////
+//
+// Also an extendable class (%vertical-align) --
+// try and use instead to reduce code bloat
+//
+// Mixin usage:
+//
+// .element{
+//   @include vertical-align;
+// }
+//
+// http://goo.gl/2MJm56
+//
+////////////////////////
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+/*------------------------------------*\
+   BREAKPOINT MIXINS
+\*------------------------------------*/
+////////////////////////
+//
+//  Use bp() instead of breakpoint() within the sass
+//  to run though this mixin for no-media stylesheet. 
+//
+////////////////////////
+@mixin bp($media) {
+  @if ($disable-responsive == false) {
+
+    @include breakpoint($media) 
+    {
+      @content;
+    }
+
+  } @else if ($disable-responsive == true) {
+
+    // Modify this conditional to match the media queries to be included
+    // in the no-media stylesheet.
+    @if (($media == $breakpoint-md) or ($media == $breakpoint-lg)) {
+      @content;
+    }
+
+  }
+}
+
+
+/*------------------------------------*\
+   BUTTON VARIATIONS MIXINS
+\*------------------------------------*/
+////////////////////////
+//
+//  Easily pump out default styles, as well as :hover, 
+//  :focus, :active, and disabled options for all buttons
+//
+////////////////////////
+@mixin button-variant($color, $background) {
+  background-color: $background;
+  border: 0;
+  color: $color;
+  position: relative;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus,
+  &:focus:hover,
+  .open > &.dropdown-toggle {
+    color: lighten($color, 10%);
+    @if ($background == "transparent"){
+      background-color: $background;
+    }
+    @else{
+      background-color: lighten($background, 10%);
+    }
+  }
+  &:focus
+  {
+    color:$color;
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+    color: darken($color, 10%);
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: darken($color, 10%);
+      @if ($background == "transparent"){
+        background-color: $background;
+      }
+      @else{
+        background-color: darken($background, 10%);
+      }
+    }
+  }
+
+  .badge {
+    background-color: $color;
+    color: $background;
+  }
+}
+
+// Button sizes
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height) {
+  font-size: $font-size;
+  line-height: $line-height;
+  padding: $padding-vertical $padding-horizontal;
+}
+
+@mixin button-play($color, $background-color){
+  @include button-variant($color, $background-color);
+  @include button-size($btn-padding-vertical, $btn-padding-horizontal, $font--epsilon, $line-height);
+  text-align: left;
+  text-decoration: none;
+  &:after{
+      content: "";
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -12px; // ~ 1/2 size
+      @include sprite-retina(play);
+  }
+}
+
+@mixin button-boxed-arrow($color, $background-color){
+  @include button-variant($color, $background-color);
+  @include button-size(16px, $btn-padding-horizontal, $font--epsilon, $line-height);
+  display: inline-block;
+  padding-right: 70px;
+  text-align: left;
+  text-decoration: none;
+  &:after{
+    @if($background-color != transparent){
+      background-color: lighten($background-color, 10%);
+    }
+    @else{
+      background-color: $background-color;
+    }
+    content: "›";
+    display: inline-block;
+    font-size: $font--gamma;
+    padding: 6px 15px 12px 15px;
+    position: absolute;
+    opacity: 0.5;
+    right: 10px;
+    @include single-transition(opacity, 75ms, linear, 0);
+    @extend %vertical-align;
+  }
+  &:hover{
+    &:after{
+      opacity: 1;
+    }
+  }
+}
+
+// caret for buttons
+@mixin caret($color, $size, $direction, $enclose: false) { // #fff, 6px, left
+  content: " ";
+  display: inline-block;
+  height: 0;
+  width: 0;
+  @if $enclose{
+    background-color: invert($color);
+    padding: $size;
+  }
+  @if $direction == 'up'{
+    border-right: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  }
+  @else if $direction == 'right'{
+    border-top: $size solid transparent;
+    border-left: $size solid $color;
+    border-bottom: $size solid transparent;
+  }
+  @else if $direction == 'down'{
+    border-top: $size solid transparent;
+    border-right: $size solid transparent;
+    border-left: $size solid $color;
+  }
+  @else if $direction == 'left'{
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+  }
+}

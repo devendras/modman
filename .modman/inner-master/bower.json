@@ -1,0 +1,35 @@
+{
+  "name": "middleman-discovery",
+  "version": "0.0.0",
+  "authors": [
+    "Tara <info@propanestudio.com>"
+  ],
+  "description": "Propane front-end build kit using Middleman",
+  "main": "source/index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./source/assets/js/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11.0",
+    "backbone": "~1.1.2",
+    "requirejs": "~2.1.11",
+    "modernizr": "~2.7.2",
+    "respond": "~1.4.2",
+    "almond": "~0.2.9",
+    "velocity": "~0.8.0",
+    "twbs-bootstrap-sass": "~3.2.0",
+    "flexslider-scss": "~1.0.0",
+    "select2": "~3.5.1",
+    "jquery-hammerjs": "~1.1.3"
+  }
+}

@@ -1,0 +1,11 @@
+/* 
+  NO MEDIA
+  Use this for forcing normally fluid page containers to have a minimum
+  width. This is importatin to retain page layouts when using the 
+  no-media stylesheet. 
+*/
+
+.grid-construct
+{
+  min-width: 980px;
+}

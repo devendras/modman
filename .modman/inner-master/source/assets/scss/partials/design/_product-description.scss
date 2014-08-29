@@ -1,0 +1,85 @@
+.productdetail__description{
+    background-color: $brand-primary;
+    color: #fff;
+    @extend %grid-padding-standard;
+    overflow: hidden; //clear
+}
+.productdetail__description__headline{
+    margin-bottom: 25px;
+    @include bp($breakpoint-md){
+
+    }
+}
+.productdetail__description__body{
+    margin-bottom: 10px;
+    @include bp($breakpoint-md){
+        @include span-columns(5, 8);
+        border-right: 1px solid #fff;
+        padding-right: 50px;
+    }
+    @include bp($breakpoint-lg){
+        @include span-columns(6, 9);
+    }
+}
+.productdetail__description__countbox{
+    @include bp($breakpoint-md){
+        @include span-columns(3 omega, 8);
+        padding-left: 25px;
+    }
+    @include bp($breakpoint-lg){
+        @include span-columns(3 omega, 9);
+    }
+}
+
+.productDetail__rate__product{
+    color: $brand-primary;
+    border-top: 1px solid $gray-light;
+    padding: 25px 0;
+    .reviews__rating{
+        margin: 20px 0;
+    }
+}
+.productDetail__review__product {
+    width: 100%;
+    box-shadow: none;
+    background: none;
+}
+.productDetail__review__product--submit{
+    width: 100%;
+    @include bp($breakpoint-md){
+        width: 100px;
+    }
+}
+.productDetail__rating__hearts {
+    margin: 20px 0;
+}
+.productDetail__customer_review--name{
+    color: $brand-info;
+    margin-bottom: 15px;
+}
+.productDetail__customer--review{
+    padding: 25px 0;
+    overflow: hidden;
+}
+.productDetail__customer--review--text{
+    @include bp($breakpoint-md){
+        @include span-columns(5, 8);
+    }
+    @include bp($breakpoint-lg){
+        @include span-columns(6, 9);
+    }
+}
+.productDetail__customer--reviews{
+    .customer--review--rating{
+        margin-top: 15px;
+        @include bp($breakpoint-md){
+            margin-top: 0;
+            padding-left: 25px;
+            @include span-columns(3 omega, 8);
+        }
+        @include bp($breakpoint-lg){
+            @include span-columns(3 omega, 9);
+        }
+
+    }
+}

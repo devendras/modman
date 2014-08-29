@@ -1,0 +1,94 @@
+.productDetail__container{
+    background-color: #fff;
+    @include bp($breakpoint-md){
+        margin: 50px 0 0 0;
+        padding: 85px 0 0 0;
+    }
+    @include bp($breakpoint-lg){
+        margin: 0;
+        padding: 0;
+    }
+}
+.productCarousel{
+    background-color: #fff;
+    position: relative;
+    @extend %c-lg-9;
+    @extend %c-md-5;
+    overflow: hidden;
+}
+.productCarousel__thumbnails{
+    position: absolute;
+    @extend %c-md-2-omega;
+    @extend %c-lg-2-omega;
+    @include bp($breakpoint-md){
+        top: 0;
+    }
+    @include bp($breakpoint-lg){
+        bottom: 0;
+        top: inherit;
+
+    }
+}
+.productCarousel__thumbnails__item{
+    border-bottom: 1px solid #fff;
+    display: inline-block;
+    &.active{
+        border-color: $brand-primary;
+    }
+    @include bp($breakpoint-sm){
+        display: none;
+    }
+}
+.productCarousel__thumbnails--btn{
+    max-width: 100%;
+    @extend %btn-invisible-style;
+}
+
+.productCarousel__feature{
+    position: relative;
+    text-align: center;
+    @extend %c-md-6-omega;
+    @extend %c-lg-10-omega;
+    @include bp($breakpoint-md){
+        padding: 0;
+    }
+    @include bp($breakpoint-lg){
+        padding: 100px 0 50px 0;
+    }
+}
+.productCarousel__feature__img{
+    display: none;
+    &.active{
+        display: inline-block;
+    }
+}
+.productCarousel__indicators{
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    text-align: center;
+}
+.productCarousel__indicators--item{
+    display: inline-block;
+    padding: 10px;
+    // @include bp($breakpoint-lg){
+    //     display: none;
+    // }
+    .productCarousel__indicators--item--button{
+        background-color: #fff;
+        border: 1px solid $brand-info;
+        height: 20px;
+        // margin-right: 20px;
+        position: relative;
+        width: 20px;
+        @include border-radius(10px);
+    }
+    &.active{
+        .productCarousel__indicators--item--button{
+            background-color: $brand-info;
+        }
+    }
+}

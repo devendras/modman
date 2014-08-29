@@ -1,0 +1,23 @@
+---
+title: Product Detail
+layout: layout
+---
+
+<div class="productDetail__container">
+    <%= partial "modules/product_detail_container" %>
+</div>
+<div class="grid-construct">
+    <div class="l-lg-75">
+        <%= partial "modules/product_description" %>
+        <div class="productDetail__collapse__panels panel-group" data-controller="collapse">
+            <%= partial "modules/product_shipping" %>
+            <%= partial "modules/product_nutrition" %>
+            <%= partial "modules/product_reviews" %>
+        </div>
+    </div>
+
+    <section class="l-lg-100" data-affix-stop="sidebar">
+        <h2 class="product__rec--header">You Might Also Like</h2>
+        <%= partial "modules/product_rec" %>
+    </section>
+</div>

@@ -1,0 +1,34 @@
+////////////////////////
+// Design Partials
+//
+// Seperate your layout from design, building sub folders and partials
+//  in this folder, with everything being imported, in casading order,
+//  into this file.
+//
+// All styling, non box model properties go here
+////////////////////////
+
+@import "../vendor/twbs-bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
+@import "../vendor/flexslider-scss/flexslider";
+@import "project-layout";
+@import "collapse";
+
+@import "nav";
+@import "footer";
+@import "main";
+@import "simple-image-cta";
+@import "hello-bar";
+@import "product-sidebar";
+@import "product-carousel";
+@import "product-description";
+@import "product-rec";
+@import "recipe-detail-hero";
+@import "recipe-detail-info";
+@import "recipe-detail-more-recipes";
+@import "ratings";
+@import "fullbleed-cta";
+@import "square-cta";
+@import "wide-left-image-cta";
+@import "social-cta";
+@import "promotions";
+@import "complex-cta";

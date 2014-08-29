@@ -1,0 +1,63 @@
+%squareCta{
+    border-bottom: 1px solid #fff;
+    height: auto;
+    max-height: 100%;
+    position: relative;
+    text-align: center;
+    @extend %c-sm-2;
+    @extend %c-md-4;
+    @extend %c-lg-3;
+    @include clearfix;
+    @extend %grid-padding-standard;
+    @include bp($breakpoint-md){
+        height: $square-cta-height-md;
+        text-align: left;
+    }
+    @include bp($breakpoint-lg){
+        height: $square-cta-height-lg;
+    }
+    @include bp($breakpoint-xl){
+        height: $square-cta-height-xl;
+    }
+}
+.square-cta-img{
+    padding-bottom: 13px;
+}
+
+.square-cta-brown{
+    @extend %background-color-brown;
+    @extend %squareCta;
+}
+.square-cta-gold{
+    @extend %squareCta;
+    @extend %background-color-gold;
+}
+.square-cta-blue{
+    @extend %squareCta;
+    @extend %background-color-blue;
+}
+
+.square-cta-link-brown{
+    @extend %btn-boxed-arrow-brown;
+    float: right;
+    margin: 10px $padding-sm-hrz $padding-sm-vrt;
+    @include bp($breakpoint-lg){
+        margin: 10px (-$padding-lg-hrz) (-$padding-lg-vrt);
+    }
+}
+.square-cta-link-gold{
+    @extend %btn-boxed-arrow-gold;
+    float: right;
+    margin: 10px (-$padding-sm-hrz) (-$padding-sm-vrt);
+    @include bp($breakpoint-lg){
+        margin: 10px (-$padding-lg-hrz) (-$padding-lg-vrt);
+    }
+}
+.square-cta-link-blue{
+    @extend %btn-boxed-arrow-blue;
+    float: right;
+    margin: 10px (-$padding-sm-hrz) (-$padding-sm-vrt);
+    @include bp($breakpoint-lg){
+        margin: 10px (-$padding-lg-hrz) (-$padding-lg-vrt);
+    }
+}

@@ -1,0 +1,91 @@
+/**
+ *
+ * Icons & Icon-based images
+ *
+ */
+
+[class^="icon__"]:before, 
+[class^="icon__"]:after, 
+[class*=" icon__"]:before, 
+[class*=" icon__"]:after{
+  @include background-size(cover);
+  content: "";
+}
+
+.icon{
+  @extend %inline-block;
+}
+
+%icon-button{
+	background-color: transparent;
+	border: none;
+	outline: 0;	
+}
+
+.icon__heart{
+	@include sprite-retina(heart);
+	@extend %icon-button;
+}
+.icon__heart--active{
+    @include sprite-retina(heart-active);
+    @extend %icon-button;
+}
+.icon__arrow-left{ 
+	@include sprite-retina(arrow-left);
+}
+.icon__arrow-down{
+	@include sprite-retina(arrow-down);
+}
+.icon__arrow-right{ 
+	@include sprite-retina(arrow-right);
+}
+.icon__arrow-up{
+	@include sprite-retina(arrow-up);
+}
+.icon__facebook{
+	@include sprite-retina(facebook);
+	@extend %icon-button;
+}
+.icon__twitter{
+	@include sprite-retina(twitter);
+	@extend %icon-button;
+}
+.icon__instagram{
+	@include sprite-retina(instagram);
+	@extend %icon-button;
+}
+.icon__pinterest{
+	@include sprite-retina(pinterest);
+	@extend %icon-button;
+}
+.icon__map{
+	@include sprite-retina(map);
+}
+.icon__profile{
+	@include sprite-retina(profile);
+}
+.icon__search{
+	@include sprite-retina(search);
+}
+.icon__shopping-bag{
+	@include sprite-retina(shopping-bag);
+}
+.icon__shopping-bag-white{
+	@include sprite-retina(shopping-bag-white);
+}
+.icon__hamburger{
+	@include sprite-retina(hamburger);
+}
+.icon__search-large{
+	@include sprite-retina(search-large);
+}
+.icon__print{
+	@include sprite-retina(print);
+	@extend %icon-button;
+}
+.icon__play{
+	@include sprite-retina(play);
+}
+.icon__white-heart{
+	@include sprite-retina(white-heart);
+}

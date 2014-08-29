@@ -1,0 +1,234 @@
+/*------------------------------------*\
+    $Fonts
+\*------------------------------------*/
+@font-face {
+  font-family: 'snaglight';
+  src: url('../fonts/snag-light-webfont.eot');
+  src: url('../fonts/snag-light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/snag-light-webfont.woff') format('woff'),
+       url('../fonts/snag-light-webfont.ttf') format('truetype'),
+       url('../fonts/snag-light-webfont.svg#snaglight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+@font-face {
+  font-family: 'hoplightregular';
+  src: url('../fonts/hoplight-webfont.eot');
+  src: url('../fonts/hoplight-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/hoplight-webfont.woff') format('woff'),
+       url('../fonts/hoplight-webfont.ttf') format('truetype'),
+       url('../fonts/hoplight-webfont.svg#hoplightregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*------------------------------------*\
+    $Default Styles
+\*------------------------------------*/
+
+/**
+ * These are intended to provide a default
+   level of styling that can be over-written
+   by @extending the silent (%) selectors below
+ */
+
+h1{
+  @extend %headline--large;
+}
+
+h2{
+  @extend %headline--medium;
+  text-transform: uppercase;
+}
+
+h3{
+  @extend %headline--small;
+}
+
+h4{
+  @extend %subhead--large;
+}
+
+h5, blockquote{
+  @extend %subhead--medium;
+}
+
+h6, dt{
+  @extend %subhead--small;
+}
+
+p, li, dd, figcaption{
+  @extend %copy--body;
+}
+
+/*------------------------------------*\
+    $Headlines
+\*------------------------------------*/
+
+%headline--large, 
+.headline--large{
+  font-family: $san-serif-family;
+  @include font-size($font--alpha);
+
+  @include breakpoint($breakpoint-md) {
+    @include font-size($font--beta);
+  }
+
+  @include breakpoint($breakpoint-lg) {
+    @include font-size($font--alpha);
+  }
+}
+
+%headline--medium, 
+.headline--medium{
+  font-family: $san-serif-family;
+  @include font-size($font--gamma);
+
+  @include breakpoint($breakpoint-md) {
+    @include font-size($font--gamma);
+  }
+
+  @include breakpoint($breakpoint-lg) {
+    @include font-size($font--beta);
+  }
+}
+
+%headline--small, 
+.headline--small{
+  font-family: $san-serif-family;
+  @include font-size($font--gamma);
+
+  @include breakpoint($breakpoint-md) {
+    @include font-size($font--gamma);
+  }
+}
+
+/*------------------------------------*\
+    $Subheads / $Sub-headlines
+\*------------------------------------*/
+
+%subhead--large, 
+.subhead--large{
+  font-family: $san-serif-family;
+  @include font-size($font--alpha);
+
+  @include breakpoint($breakpoint-md) {
+    @include font-size($font--kilo);
+  }
+}
+
+%subhead--medium, 
+.subhead--medium{
+  font-family: $san-serif-family;
+  @include font-size($font--epsilon);
+}
+
+%subhead--small, 
+.subhead--small{
+  font-family: $san-serif-family;
+  @include font-size($font--gamma);
+  @include breakpoint($breakpoint-md) {
+    @include font-size($font--zeta);
+  }
+}
+
+
+/*------------------------------------*\
+    $Copy / $Paragraph
+\*------------------------------------*/
+
+%copy--body, 
+.copy--body{
+  font-family: $san-serif-family;
+  @include font-size($font--epsilon);
+  font-weight: normal;
+
+  @include breakpoint($breakpoint-md) {
+    @include font-size($font--delta);
+  }
+}
+
+%copy--body-heavy, 
+.copy--body-heavy{
+  font-family: $san-serif-family;
+  @include font-size($font--gamma);
+  font-weight: bold;
+}
+
+%copy--body-light, 
+.copy--body-light{
+  font-family: $san-serif-family;
+  @include font-size($font--gamma);
+
+  @include breakpoint($breakpoint-md) {
+    @include font-size($font--epsilon);
+  }
+}
+
+%copy--caption, 
+.copy--caption{
+  font-family: $san-serif-family;
+  @include font-size($font--gamma);
+
+  @include breakpoint($breakpoint-md) {
+    @include font-size($font--epsilon);
+  }
+}
+
+%copy--sub, 
+.copy--sub{
+  font-family: $san-serif-family;
+  @include font-size($font--delta);
+
+  @include breakpoint($breakpoint-md) {
+    @include font-size($font--zeta);
+  }
+}
+
+/*------------------------------------*\
+    $CTA's
+\*------------------------------------*/
+
+%cta__copy, 
+.cta__copy{
+  font-family: $san-serif-family;
+  @include font-size($font--epsilon);
+}
+
+/*------------------------------------*\
+    $Buttons
+\*------------------------------------*/
+
+%button__copy, 
+.button__copy{
+  font-family: $san-serif-family;
+  @include font-size($font--milli);
+}
+
+/*------------------------------------*\
+    $Nav
+\*------------------------------------*/
+
+%nav__list-item--main{
+  font-family: $san-serif-family;
+  @include font-size($font--gamma);
+  font-weight: bold;
+
+  @include breakpoint($breakpoint-lg) {
+    font-family: $san-serif-family;
+    @include font-size($font--gamma);
+  }
+}
+
+%nav__list-item--subhead{
+  font-family: $san-serif-family;
+  @include font-size($font--gamma);
+
+  @include breakpoint($breakpoint-lg) {
+    font-family: $san-serif-family;
+  }
+}

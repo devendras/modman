@@ -1,0 +1,69 @@
+.promotions__wrapper{
+    background-color: $brand-brown;
+    display: none;
+}
+%promotion{
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    height: 425px;
+    position: relative;
+    @include bp($breakpoint-md){
+        height: 425px;
+    }
+    @include bp($breakpoint-lg){
+        height: 425px;
+    }
+    @include bp($breakpoint-xl){
+        height: 425px;
+    }
+    .btn-boxed-arrow-transparent{
+        bottom: 0px;
+        position: absolute;
+        right: 0px;
+        margin: $padding-sm-vrt $padding-sm-hrz;
+        @include bp($breakpoint-lg){
+            margin: $padding-lg-vrt $padding-lg-hrz;
+        }
+    }
+}
+.promotion__eyebrow{
+    background-color: $brand-info;
+    color: #fff;
+    height: 85px;
+    left: 0px;
+    padding: 0px 12px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: 85px;
+}
+.promotion-1{
+    @extend %c-lg-12;
+    @extend %promotion;
+}
+
+.promotion-2{
+    @extend %c-md-4;
+    @extend %c-lg-6;
+    @extend %promotion;   
+}
+.promotion-2-omega{
+    @extend %c-md-4-omega;
+    @extend %c-lg-6-omega;
+    @extend %promotion;   
+}
+
+.promotion-delay{
+    display: none;
+    @include bp($breakpoint-lg){
+        display: block;
+    }
+}
+.promotion-3{
+    @extend %c-lg-4;
+    @extend %promotion;
+}
+.promotion-3-omega{
+    @extend %c-lg-4-omega;
+    @extend %promotion;
+}

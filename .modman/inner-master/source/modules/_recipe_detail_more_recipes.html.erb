@@ -1,0 +1,23 @@
+<nav class="recipe__details__more__recipies--nav">
+	<ul>
+		<li class="recipe__details__more__recipies--nav--item">
+			<a class="recipe__details__more__recipies--nav--links" href="#"><%= lorem.words 2 %></a>
+		</li class="recipe__details__more__recipies--nav--item">
+		<li class="recipe__details__more__recipies--nav--item">
+			<a class="recipe__details__more__recipies--nav--links" href="#"><%= lorem.words 2 %></a>
+		</li>
+		<li class="recipe__details__more__recipies--nav--item">
+			<a class="recipe__details__more__recipies--nav--links" href="#"><%= lorem.words 2 %></a>
+		</li>
+	</ul>
+</nav>
+<div class="recipe__rec__carousel flexslider" data-controller="productRecCarousel">
+    <ul class="recipe__rec--items slides">
+    <% 4.times do |num| %>
+        <%= partial "modules/_recipe_rec_item.html" %>
+    <% end %>
+    </ul>
+</div>
+<section class="recipe__rec__view--all--container">
+	<a href="#" class="btn-link recipe__rec__view--all">View all small bites</a>
+</section>

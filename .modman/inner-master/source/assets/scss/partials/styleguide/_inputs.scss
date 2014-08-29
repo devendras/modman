@@ -1,0 +1,10 @@
+input, 
+textarea{
+    background-color: $gray-lighter;
+    border: 1px solid $gray-light;
+    padding: 10px 12px;
+    @include single-box-shadow($gray-light, 0, 0, 30px, 0, inset);
+}
+input[type='radio']{
+    @include single-box-shadow(none);
+}

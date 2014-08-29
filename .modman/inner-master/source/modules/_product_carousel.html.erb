@@ -1,0 +1,25 @@
+<div class="productCarousel" data-controller="productCarousel">
+    <ul class="productCarousel__thumbnails">
+    <% 3.times do |i| %>
+        <li class="productCarousel__thumbnails__item <% if i == 1  %>active<% end %>">
+            <button class='productCarousel__thumbnails--btn'>
+                <img src="<%= lorem.image('300x300') %>" />
+            </button>
+        </li>
+    <% end %>
+    </ul>
+    <div class="productCarousel__feature">
+        <div>
+        <% 3.times do |i| %>
+            <img src="<%= lorem.image('400x600') %>" class="productCarousel__feature__img <% if i == 1  %>active<% end %>">
+        <% end %>
+        </div>
+        <ol class="productCarousel__indicators">
+            <% 3.times do |i| %>
+            <li class="productCarousel__indicators--item <% if i == 1  %>active<% end %>"><% 3.times do |i| %><% end %>
+                <button class="productCarousel__indicators--item--button"></button>
+            </li>
+            <% end %>
+        </ol>
+    </div>
+</div>

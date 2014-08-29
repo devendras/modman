@@ -1,0 +1,49 @@
+////////////////////////
+//
+// Structure
+//
+////////////////////////
+
+/**
+ * Box-model declarations,
+ * div structure,
+ * column breakdowns, etc.
+ */
+
+/*------------------------------------*\
+    Main Grid Placeholders
+\*------------------------------------*/
+
+@each $grid in $grid-collection{
+    $abbr: nth($grid, 1);
+    $grid-bp: nth($grid, 2);
+    $total-cols: nth($grid, 3);
+    @if($abbr != 'sm'){
+        @include bp($grid-bp){
+            @for $i from 1 through $total-cols {
+                %c-#{$abbr}-#{$i} { 
+                    @include span-columns($i, $total-cols);
+                }
+                %c-#{$abbr}-#{$i}-omega{
+                    @include span-columns($i omega, $total-cols);
+                }
+                %c-#{$abbr}-#{$i}-offset {
+                    @include push($i, $total-cols);
+                }
+            }
+        }
+    }
+    @else{
+        @for $i from 1 through $total-cols {
+            %c-#{$abbr}-#{$i} { 
+                @include span-columns($i, $total-cols);
+            }
+            %c-#{$abbr}-#{$i}-omega{
+                @include span-columns($i omega, $total-cols);
+            }
+            %c-#{$abbr}-#{$i}-offset {
+                @include push($i, $total-cols);
+            }
+        }
+    }
+}

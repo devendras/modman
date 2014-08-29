@@ -1,0 +1,66 @@
+<section class="recipleDetail__share">
+	<ul class="recipleDetail__share--list">
+		<li class="recipeDetail__share--header--item">
+			<button class="icon__pinterest"></button>
+		</li>
+		<li class="recipeDetail__share--header--item">
+			<button class="icon__instagram"></button>
+		</li>
+		<li class="recipeDetail__share--header--item">
+			<button class="icon__facebook"></button>
+		</li>
+		<li class="recipeDetail__share--header--item print--recipe">
+			<button class="icon__print"></button><span class="print--recipe--text">Print</span>
+		</li>
+	</ul>
+</section>
+<header class="recipeDetail__info__header">
+	<section class="recipeDetail__info__wrapper">
+		<article class="recipeDetail__info__header--item recipeDetail__servings">
+			<h1 class="recipeDetail__info__header--title">4</h1>
+			<h6 class="recipeDetail__info__header--detail">Servings</h6>
+		</article>
+		<article class="recipeDetail__info__header--item recipeDetail__prep--time">
+			<h1 class="recipeDetail__info__header--title">1
+				<span class="recipeDetail__info__header--time">hr</span>
+				30
+				<span class="recipeDetail__info__header--time">min</span>
+			</h1>
+			<h6 class="recipeDetail__info__header--detail">Time</h6>
+		</article>
+		<article class="recipeDetail__info__header--item recipeDetail__rating">
+			<span class="recipeDetail__info__header--title recipeDetail__info__header--rating icon__white-heart">4.5</span>
+			<h6 class="recipeDetail__info__header--detail">Rating</h6>
+		</article>
+	</section>
+</header>
+<section class="recipeDetail__info--instructions" data-controller="grow">
+	<article class="recipeDetail__info__ingredients">
+		<h2 class="recipeDetail__info--list--header">Ingredients</h2>
+		<ul class="recipeDetail__info__ingredients--list">
+			<li class="recipeDetail__info__ingredients--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__ingredients--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__ingredients--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__ingredients--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__ingredients--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__ingredients--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__ingredients--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__ingredients--list--item"><%= lorem.sentence %></li>
+		</ul>
+	</article>
+	<article class="recipeDetail__info__directions">
+		<h2 class="recipeDetail__info--list--header">Directions</h2>
+		<ol class="recipeDetail__info__directions--list">
+			<li class="recipeDetail__info__directions--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__directions--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__directions--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__directions--list--item"><%= lorem.paragraph %></li>
+			<li class="recipeDetail__info__directions--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__directions--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__directions--list--item"><%= lorem.sentence %></li>
+			<li class="recipeDetail__info__directions--list--item"><%= lorem.sentence %></li>
+		</ol>
+	</article>
+	<button class="btn-default recipeDetail__info__directions--expand--btn" data-grow="toggle">Expand</button>
+</section>
+

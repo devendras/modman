@@ -1,0 +1,29 @@
+////////////////////////
+// IE File
+//
+// This file gets turned into ie.css. This file should really
+//  hold nothing except for imports of your base, layout, and design
+//  partials.
+// This file is styles specific to IE 8 and below.
+////////////////////////
+
+////////////////////////
+// Responsive Imports
+////////////////////////
+@import 'susy';
+@import 'breakpoint';
+
+////////////////////////
+// Import Variables
+////////////////////////
+@import 'partials/global/variables';
+
+////////////////////////
+// Import Layout
+////////////////////////
+@import 'partials/layout/structure-ie';
+
+////////////////////////
+// Import Design
+////////////////////////
+@import 'partials/design/main-ie';
